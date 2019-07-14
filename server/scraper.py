@@ -1,6 +1,52 @@
 import urllib.request
+from urllib.parse import urlparse, parse_qs
 import json
 from bs4 import BeautifulSoup
+
+def parse_meals(url):
+    # receive the domain of the URL
+    parsed_url = urlparse(url)
+    domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_url)
+
+    # Dictionary to store the meals
+    meals = {}
+    
+    # Makes a request to the given URL and stores the response
+    response = urllib.request.urlopen(url)
+
+    # Reads in the response and creates a variable out of it to be used as a parser
+    html_doc = response.read()
+    soup = BeautifulSoup(html_doc, 'html.parser')
+    for text in soup.find_all('div', {"class": "jumbotron"}):
+        # map each meal's URL into the meals dictionary
+        meal = str(text.h1.strong.text)
+        meals[meal] = domain + "location?meal=" + meal
+
+    return meals
+
+def parse_locations(url):
+    # receive the domain of the URL
+    parsed_url = urlparse(url)
+    domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_url)
+
+    # parse the meal from the URL
+    meal = parse_qs(parsed_url.query)['meal'][0]
+
+    # Dictionary to store the locations
+    locations = {}
+
+    # Makes a request to the given URL and stores the response
+    response = urllib.request.urlopen(url)
+
+    # Reads in the response and creates a variable out of it to be used as a parser
+    html_doc = response.read()
+    soup = BeautifulSoup(html_doc, 'html.parser')
+    for text in soup.find_all('div', {"class": "jumbotron"}):
+        # map each location URL into the locations dictionary
+        location = str(text.h1.strong.text).replace(" ", "%20")
+        locations[location] = domain + "select?meal=" + meal + "&loc=" + location
+
+    return locations
 
 # parse a URL menu
 def parse_menu(url):
@@ -41,5 +87,3 @@ def parse_menu(url):
     # Converts the dictionary created by the program into a json format
     app_json = json.dumps(categories_to_names_and_images)
     return app_json
-
-print(parse_menu("http://hf-foodapp.austin.utexas.edu/select?meal=Dinner&loc=J2%20FAST%20Line"))
