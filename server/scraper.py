@@ -3,6 +3,7 @@ from urllib.parse import urlparse, parse_qs
 import json
 from bs4 import BeautifulSoup
 
+# parse a meals URL
 def parse_meals(url):
     # receive the domain of the URL
     parsed_url = urlparse(url)
@@ -22,8 +23,11 @@ def parse_meals(url):
         meal = str(text.h1.strong.text)
         meals[meal] = domain + "location?meal=" + meal
 
-    return meals
+    # Converts the meals dictionary into JSON
+    meals_json = json.dumps(meals)
+    return meals_json
 
+# parse a location URL
 def parse_locations(url):
     # receive the domain of the URL
     parsed_url = urlparse(url)
@@ -46,7 +50,9 @@ def parse_locations(url):
         location = str(text.h1.strong.text).replace(" ", "%20")
         locations[location] = domain + "select?meal=" + meal + "&loc=" + location
 
-    return locations
+    # Converts the locations dictionary into JSON
+    locations_json = json.dumps(locations)
+    return locations_json
 
 # parse a URL menu
 def parse_menu(url):
@@ -84,6 +90,6 @@ def parse_menu(url):
                 img_url = process_line(line, 'src=', 'width', 5, 2)
                 categories_to_names_and_images[category][food_name].append(img_url)
 
-    # Converts the dictionary created by the program into a json format
-    app_json = json.dumps(categories_to_names_and_images)
-    return app_json
+    # Converts the menu dictionary into JSON
+    menu_json = json.dumps(categories_to_names_and_images)
+    return menu_json
