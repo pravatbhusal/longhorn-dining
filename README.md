@@ -1,2 +1,2 @@
 # ut-dining-app
-A UT dining app for students to filter out food criterion.
+A dining hall app for UT Austin to filter out food based on criterion.
