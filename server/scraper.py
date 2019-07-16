@@ -1,5 +1,4 @@
-# Authors:
-# Nikhil Kumar & Pravat Bhusal
+# Authors: Nikhil Kumar & Pravat Bhusal
 
 import urllib.request
 from urllib.parse import urlparse, parse_qs
@@ -24,7 +23,7 @@ def parse_meals(url):
     for source_text in soup.find_all('div', {'class": "jumbotron'}):
         # map each meal's URL into the meals dictionary
         meal = str(source_text.h1.strong.text)
-        meals[meal] = domain + 'location?meal=' + meal
+        meals[meal] = domain + 'location?mea  l=' + meal
 
     # converts the meals dictionary into JSON
     meals_json = json.dumps(meals)
