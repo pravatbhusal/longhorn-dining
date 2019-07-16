@@ -14,17 +14,17 @@ def landing():
     return "<h1>Landing Page of server.</h1>"
 
 # meal selection route
-@server.route("/meal-selection")
-def meal_selection():
+@server.route("/meals")
+def meals():
     return parse_meals
 
 # locations route
-@server.route("/meal-selection/locations")
+@server.route("/meals/locations")
 def locations():
     return parse_locations
 
 # menu route
-@server.route("/meal-selection/locations/menu")
+@server.route("/meals/locations/menu")
 def menu():
     return parse_menu
 
