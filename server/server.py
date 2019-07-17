@@ -1,5 +1,5 @@
 # Author:
-# Nikhil Kumar & Pravat Bhusal
+# Nikhil Kumar
 
 # server imports
 from flask import Flask, request
