@@ -3,6 +3,8 @@
   --white: rgb(255, 255, 255);
   --burnt-orange: rgb(191, 87, 0);
   --dark-blue: rgb(16, 0, 36);
+  --primary-font: 'Holtwood One SC', serif;
+  --secondary-font: 'Syncopate', sans-serif;
 }
 
 /* Header Styles */
@@ -12,11 +14,12 @@
   justify-content: center;
 }
 #header-text {
-  margin-top: 15px;
+  margin-top: 5px;
   margin-bottom: 15px;
   margin-right: 50px;
-  font-size: 138px;
+  font-size: 96px;
   color: var(--burnt-orange);
+  font-family: var(--primary-font);
 }
 #header-logo-container {
   display: flex;
@@ -45,6 +48,7 @@
 }
 #button-text {
   margin-left: 25px;
-  font-size: 72px;
+  font-size: 48px;
   color: var(--white);
+  font-family: var(--primary-font);
 }
