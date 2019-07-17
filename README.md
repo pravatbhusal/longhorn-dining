@@ -12,3 +12,5 @@ python3 server.py
 
 ### Client
 The client uses bare-bones HTML, CSS, and JavaScript.
+
+To initiate the client, copy and paste the files inside the ```client``` folder into your web-server's public HTMl folder.
