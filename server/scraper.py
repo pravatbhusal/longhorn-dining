@@ -13,7 +13,7 @@ def parse_meals(url):
 
     # dictionary to store the meals
     meals = dict()
-    
+
     # makes a request to the given URL and stores the response
     response = urllib.request.urlopen(url)
 
@@ -76,7 +76,7 @@ def parse_menu(url):
     menu = dict()
 
     # finds all the td tags in the HTML text
-    for source_text in soup.find_all('td'):  
+    for source_text in soup.find_all('td'):
 
         # splits the HTML text into separate lines of text
         lines = str(source_text).split('\n')
