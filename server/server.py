@@ -13,13 +13,13 @@ import json
 
 # meal selection route
 @server.route("/meal", methods=['POST'])
-def meals():
+def meal():
     url = request.form.get('url')
     return parse_meals(url)
 
 # locations route
 @server.route("/meal/location", methods=['POST'])
-def locations():
+def location():
     url = request.form.get('url')
     return parse_locations(url)
 
