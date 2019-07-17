@@ -8,25 +8,23 @@ server = Flask(__name__)
 # scraper import
 from scraper import parse_meals, parse_locations, parse_menu
 
-# landing route (to be removed)
-@server.route("/")
-def landing():
-    return "<h1>Landing Page of server.</h1>"
-
 # meal selection route
-@server.route("/meals")
+@server.route("/meal", methods=['POST'])
 def meals():
-    return parse_meals
+    url = request.form.get('url')
+    return parse_meals(url)
 
 # locations route
-@server.route("/meals/locations")
+@server.route("/meal/location", methods=['POST'])
 def locations():
-    return parse_locations
+    url = request.form.get('url')
+    return parse_locations(url)
 
 # menu route
-@server.route("/meals/locations/menu")
+@server.route("/meal/location/menu", methods=['POST'])
 def menu():
-    return parse_menu
+    url = request.form.get('url')
+    return parse_menu(url)
 
 if __name__ == "__main__":
     server.run("localhost", 8080)
