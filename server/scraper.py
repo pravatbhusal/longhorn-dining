@@ -1,7 +1,6 @@
 # Authors: Nikhil Kumar & Pravat Bhusal
 
-# import file io packages
-from urllib import request
+import urllib.request
 from urllib.parse import urlparse, parse_qs
 import json
 from bs4 import BeautifulSoup
@@ -12,19 +11,19 @@ def parse_meals(url):
     parsed_url = urlparse(url)
     domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_url)
 
-    # dictionary to store the meals with their url
+    # dictionary to store the meals
     meals = dict()
-
+    
     # makes a request to the given URL and stores the response
-    response = request.urlopen(url)
+    response = urllib.request.urlopen(url)
 
     # reads in the response and creates a variable out of it to be used as a parser
     html_doc = response.read()
     soup = BeautifulSoup(html_doc, 'html.parser')
-    for source_text in soup.find_all('div', {'class": "jumbotron'}):
+    for source_text in soup.find_all('div', {"class": "jumbotron"}):
         # map each meal's URL into the meals dictionary
         meal = str(source_text.h1.strong.text)
-        meals[meal] = domain + 'location?mea  l=' + meal
+        meals[meal] = domain + 'location?meal=' + meal
 
     # converts the meals dictionary into JSON
     meals_json = json.dumps(meals)
@@ -39,16 +38,16 @@ def parse_locations(url):
     # parse the meal from the URL
     meal = parse_qs(parsed_url.query)['meal'][0]
 
-    # dictionary to store the locations with their url
+    # dictionary to store the locations
     locations = dict()
 
     # makes a request to the given URL and stores the response
-    response = request.urlopen(url)
+    response = urllib.request.urlopen(url)
 
     # reads in the response and creates a variable out of it to be used as a parser
     html_doc = response.read()
     soup = BeautifulSoup(html_doc, 'html.parser')
-    for source_text in soup.find_all('div', {'class': 'jumbotron'}):
+    for source_text in soup.find_all('div', {"class": "jumbotron"}):
         # map each location URL into the locations dictionary
         location = str(source_text.h1.strong.text).replace(' ', '%20')
         locations[location] = domain + 'select?meal=' + meal + '&loc=' + location
@@ -60,7 +59,7 @@ def parse_locations(url):
 # parse a URL menu
 def parse_menu(url):
     # makes a request to the given URL and stores the response
-    response = request.urlopen(url)
+    response = urllib.request.urlopen(url)
 
     # reads in the response and creates a variable out of it to be used as a parser
     html_doc = response.read()
@@ -73,11 +72,11 @@ def parse_menu(url):
         result = line[start + start_shift : end - end_shift]
         return result
 
-    # dictionary to store the food names with their dietary icons
+    # dictionary to store the food names as keys and a list of their dietary icon url's as values
     menu = dict()
 
     # finds all the td tags in the HTML text
-    for source_text in soup.find_all('td'):
+    for source_text in soup.find_all('td'):  
 
         # splits the HTML text into separate lines of text
         lines = str(source_text).split('\n')
