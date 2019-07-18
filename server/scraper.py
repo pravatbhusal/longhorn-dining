@@ -110,7 +110,7 @@ def parse_menu(url):
 # parse the nutrition facts from html
 def parse_nutrition(html):
     # store all the sections with nutrition facts
-    nutrition = []
+    nutrition = list()
 
     # loop through each nutrition facts section
     for source_text in html.find_all('section', {"class": "performance-facts"}):
