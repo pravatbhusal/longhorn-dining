@@ -29,15 +29,21 @@ def location():
     data = json.loads(request.data)
     meal = data["meal"]
 
-    # format the dining URL
+    # format the locations URL
     locations_url = dining_url + "location?meal=" + meal
     return parse_locations(locations_url)
 
 # menu route
 @server.route("/meal/location/menu", methods=['POST'])
 def menu():
-    url = request.form.get('url')
-    return parse_menu(url)
+    # receive the meal and location
+    data = json.loads(request.data)
+    meal = data["meal"]
+    location = data["location"]
+
+    # format the menu URL
+    menu_url = dining_url + "select?meal=" + meal + "&loc=" + location
+    return parse_menu(menu_url)
 
 if __name__ == "__main__":
     # read the server config file
