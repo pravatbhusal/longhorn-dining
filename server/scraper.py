@@ -103,7 +103,7 @@ def parse_menu(url):
                 menu[category][food_name].append(img_url)
 
     # converts the menu dictionary into JSON
-    menu["Nutrition"] = nutrition
+    menu["Nutrition"] = format_nutrition(menu, nutrition)
     menu_json = json.dumps(menu)
     return menu_json
 
@@ -131,3 +131,18 @@ def parse_nutrition(html):
         nutrition.append(item_facts)
 
     return nutrition
+
+# format the nutrition Array into a dictionary of food names
+def format_nutrition(menu, nutrition):
+    nutrition_dict = dict()
+
+    # iterate through each category in the menu
+    for category in menu:
+        foods = menu[category]
+
+        # iterate through each food in the category
+        for food in foods:
+            # add the food and its nutrition facts into the dictionary
+            nutrition_dict[food] = nutrition[len(nutrition_dict)]
+
+    return nutrition_dict
