@@ -27,7 +27,7 @@ fetch(serverURL + "/meal/location/menu", {
   })
 }).then((data) => {
   data.json().then((json) => {
-    // receive each individual items with their respective categories
+    // receive each individual items
     console.log(json)
   });
 }).catch((error) => {
