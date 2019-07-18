@@ -7,10 +7,24 @@ const port = 5000;
 // the URL of the server
 const serverURL = host + ":" + port;
 
-// send an HTTP request to receive the meals
-fetch(serverURL + "/meal").then((data) => {
+// receive the URL variables
+function getURLParams() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) => {
+      vars[key] = value;
+    });
+    return vars;
+}
+
+// send an HTTP request to receive the locations
+fetch(serverURL + "/meal/location", {
+  method: "POST",
+  body: JSON.stringify({
+    meal: getURLParams()["meal"]
+  })
+}).then((data) => {
   data.json().then((json) => {
-    // loop through each meal from the JSON data
+    // loop through each location from the JSON data
     Object.keys(json).forEach((meal) => {
       addButton(meal, json[meal]);
     });

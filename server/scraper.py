@@ -49,7 +49,7 @@ def parse_locations(url):
     soup = BeautifulSoup(html_doc, 'html.parser')
     for source_text in soup.find_all('div', {"class": "jumbotron"}):
         # map each location URL into the locations dictionary
-        location = str(source_text.h1.strong.text).replace(' ', '%20')
+        location = str(source_text.h1.strong.text)
         locations[location] = domain + 'select?meal=' + meal + '&loc=' + location
 
     # converts the locations dictionary into JSON

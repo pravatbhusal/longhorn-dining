@@ -25,7 +25,13 @@ def meal():
 # locations route
 @server.route("/meal/location", methods=['POST'])
 def location():
-    return parse_locations(url)
+    # receive the meal
+    data = json.loads(request.data)
+    meal = data["meal"]
+
+    # format the dining URL
+    locations_url = dining_url + "location?meal=" + meal
+    return parse_locations(locations_url)
 
 # menu route
 @server.route("/meal/location/menu", methods=['POST'])
