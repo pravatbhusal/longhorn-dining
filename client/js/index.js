@@ -22,7 +22,7 @@ fetch(serverURL + "/meal").then((data) => {
 
 // go to a meal page
 function goToMeal(meal) {
-  window.location.href="meal.html?meal=" + meal;
+  window.location.href = "meal.html?meal=" + meal;
 }
 
 // add a new button row into the main tag

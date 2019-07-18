@@ -15,18 +15,19 @@ function getURLParams() {
     });
     return vars;
 }
+const meal = getURLParams()["meal"];
 
 // send an HTTP request to receive the locations
 fetch(serverURL + "/meal/location", {
   method: "POST",
   body: JSON.stringify({
-    meal: getURLParams()["meal"]
+    meal: meal
   })
 }).then((data) => {
   data.json().then((json) => {
     // loop through each location from the JSON data
-    Object.keys(json).forEach((meal) => {
-      addButton(meal, json[meal]);
+    Object.keys(json).forEach((location) => {
+      addButton(location, json[meal]);
     });
   });
 }).catch((error) => {
@@ -34,22 +35,22 @@ fetch(serverURL + "/meal/location", {
   console.log(error);
 });
 
-// go to a meal page
-function goToMeal(meal) {
-  window.location.href="meal.html?meal=" + meal;
+// go to a menu page
+function goToMenu(location) {
+  window.location.href = "menu.html?meal=" + meal + "&loc=" + location;
 }
 
 // add a new button row into the main tag
-function addButton(meal, url) {
+function addButton(location, url) {
   // create a button div
   const buttonDiv = document.createElement("div");
   buttonDiv.id = "button";
 
   // the inner html to the button div
-  const upperCaseMeal = meal.toUpperCase();
+  const upperCaseLocation = location.toUpperCase();
   buttonDiv.innerHTML = `
-    <div id="button-container" onclick="goToMeal('${meal}')">
-      <h3 id="button-text">${upperCaseMeal}</h3>
+    <div id="button-container" onclick="goToMenu('${location}')">
+      <h3 id="button-text">${upperCaseLocation}</h3>
     </div>
   `;
 
