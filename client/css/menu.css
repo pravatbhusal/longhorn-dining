@@ -7,24 +7,39 @@
   --secondary-font: 'Syncopate', sans-serif;
 }
 
-/* sub-header */
-#sub-header {
+/* main */
+main {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
-#sub-header-container {
+
+/* content */
+#content {
   display: flex;
+  flex-direction: column;
   width: 85%;
+  height: auto;
+}
+
+/* header */
+#header {
+  display: flex;
+
+  /* animation */
+  animation-name: fade-in;
+  animation-duration: 1s;
+}
+#header-container {
+  display: flex;
+  width: 100%;
   height: 125px;
   text-align: left;
   align-items: center;
   background-color: var(--burnt-orange);
 }
-
-#sub-header-text {
+#header-text {
   margin-left: 25px;
-  font-size: 72px;
+  font-size: 64px;
   color: var(--white);
   font-family: var(--primary-font);
 }
@@ -33,16 +48,11 @@
 #filter:hover {
   opacity: 0.8;
   filter: alpha(opacity=50);
-  /* For IE8 and earlier */
 }
-
 #filter {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: left;
-  margin-left: 118px;
   margin-top: 25px;
+
   /* animation */
   animation-name: fade-in;
   animation-duration: 1s;
@@ -55,10 +65,20 @@
   text-align: center;
   background-color: var(--burnt-orange);
 }
-
 #filter-text {
   margin-left: 25px;
   font-size: 24px;
   color: var(--white);
   font-family: var(--primary-font);
+}
+
+/* custom fade in animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 100;
+  }
 }
