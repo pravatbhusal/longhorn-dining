@@ -1,7 +1,11 @@
 # Authors: Nikhil Kumar & Pravat Bhusal
 
+# url imports
 import urllib.request
 from urllib.parse import urlparse, parse_qs
+
+# file imports
+import os
 import json
 from bs4 import BeautifulSoup
 
@@ -78,6 +82,9 @@ def parse_menu(url):
     # dictionary to store the categories with the foods
     menu = dict()
 
+    # dictionary to store the filters
+    filters = dict()
+
     # finds all the td tags in the HTML text
     for source_text in soup.find_all('td'):
 
@@ -102,10 +109,17 @@ def parse_menu(url):
                 img_url = process_line(line, 'src=', 'width', 5, 2)
                 menu[category][food_name].append(img_url)
 
+                # add the filter (food icon) into the dictionary
+                filter = img_url.split("/")[-1]
+                filter = os.path.splitext(filter)[0].capitalize()
+                filters[filter] = img_url
+
     # converts the menu dictionary into JSON
-    menu["Nutrition"] = format_nutrition(menu, nutrition)
-    menu_json = json.dumps(menu)
-    return menu_json
+    foods = dict(Nutrition=format_nutrition(menu, nutrition),
+                Filters=filters,
+                Menu=menu)
+    foods_json = json.dumps(foods)
+    return foods_json
 
 # parse the nutrition facts from html
 def parse_nutrition(html):

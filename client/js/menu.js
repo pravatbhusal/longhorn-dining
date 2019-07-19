@@ -9,6 +9,10 @@ function getURLParams() {
 const meal = getURLParams()["meal"];
 const loc = getURLParams()["loc"];
 
+// set the header text
+headerText = document.getElementById("header-text");
+headerText.textContent = loc.replace(new RegExp("%20", "g"), " ") + " - " + meal;
+
 // send an HTTP request to receive the items
 fetch(serverURL + "/meal/location/menu", {
   method: "POST",
