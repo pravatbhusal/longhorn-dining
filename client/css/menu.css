@@ -44,14 +44,23 @@ main {
   font-family: var(--primary-font);
 }
 
+/* menu */
+#menu {
+  display: flex;
+}
+
 /* filters */
+#filters {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 20%
+}
 #filter:hover {
   opacity: 0.8;
   filter: alpha(opacity=50);
 }
 #filter {
-  display: flex;
-  margin-top: 25px;
+  margin-top: 20px;
 
   /* animation */
   animation-name: fade-in;
@@ -60,16 +69,29 @@ main {
 #filter-container {
   display: flex;
   align-items: center;
-  width: 25%;
-  height: 50px;
   text-align: center;
+  height: 50px;
   background-color: var(--burnt-orange);
+}
+#filter-image {
+  width: 32;
+  height: 32;
+  margin-left: 15px;
 }
 #filter-text {
   margin-left: 25px;
   font-size: 24px;
   color: var(--white);
   font-family: var(--primary-font);
+}
+
+/* items */
+#items {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 80%;
+  height: 765px;
+  overflow-y: scroll;
 }
 
 /* custom fade in animations */
