@@ -13,4 +13,7 @@ python3 server.py
 ### Client
 The client uses bare-bones HTML, CSS, and JavaScript.
 
+To setup the client's connection to the server, go to ```client/js/server.js``` and
+configure the server properties.
+
 To initiate the client, copy and paste the files inside the ```client``` folder into your web-server's public HTML folder.
