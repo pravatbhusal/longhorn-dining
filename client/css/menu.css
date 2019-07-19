@@ -93,6 +93,10 @@ main {
   height: 765px;
   overflow-y: scroll;
 }
+#items-table {
+  margin-top: 15px;
+  margin-left: 20px;
+}
 
 /* custom fade in animations */
 @keyframes fade-in {

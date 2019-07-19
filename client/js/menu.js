@@ -24,7 +24,7 @@ fetch(serverURL + "/meal/location/menu", {
   data.json().then((json) => {
     // parse the food information
     addFilterButtons(json["Filters"]);
-    const menu = json["Menu"];
+    addMenuItems(json["Menu"]);
     const nutrition = json["Nutrition"];
   });
 }).catch((error) => {
@@ -32,7 +32,7 @@ fetch(serverURL + "/meal/location/menu", {
   console.log(error);
 });
 
-// add the filter buttons nto the content
+// add the filter buttons onto the content
 function addFilterButtons(filters) {
   // loop through each filter from the JSON data
   Object.keys(filters).forEach((filter) => {
@@ -77,4 +77,31 @@ function getFilterName(filter) {
     }
   }
   return filterName;
+}
+
+// add the menu items onto the menu
+function addMenuItems(menu) {
+  // get the menu items table
+  const itemsTable = document.getElementById("items-table");
+
+  // loop through each item from the JSON data
+  Object.keys(menu).forEach((category) => {
+    // append the category
+    itemRow = `
+      <tr><td><b>-- ${category} --</b></td></tr>
+      <tr><td></td></tr>
+    `;
+
+    // loop through each category and append its items
+    const items = menu[category];
+    Object.keys(items).forEach((item) => {
+      itemRow += `<tr><td>${item}</td></tr>`;
+    });
+
+    // append the spaces
+    itemRow += `<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>`;
+
+    // append the html to add the category of items
+    itemsTable.innerHTML += itemRow;
+  });
 }
