@@ -100,8 +100,8 @@ function toggleFilter(filter) {
 
   // determine what type of filtering this filter goes to
   let filterObj = filterOuts;
-  if(filter == "Veggie" || filter == "Vegan" || filter == "Healthy") {
-    // set the filter object to filter in these foods
+  if(filter == "Veggie" || filter == "Vegan" || filter == "Healthy" || filter == "Gluten") {
+    // set the filter object to filter in (whitelist) these foods
     filterObj = filterIns;
   }
 
