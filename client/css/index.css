@@ -40,7 +40,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 3vw;
   /* animation */
   animation-name: fade-in;
   animation-duration: 1s;
@@ -56,13 +56,13 @@
   display: flex;
   align-items: center;
   width: 70%;
-  height: 125px;
+  height: 8vw;
   text-align: center;
   background-color: var(--burnt-orange);
 }
 #button-text {
   margin-left: 25px;
-  font-size: 48px;
+  font-size: 4.5vw;
   color: var(--white);
   font-family: var(--primary-font);
 }
