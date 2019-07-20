@@ -4,7 +4,7 @@
   --burnt-orange: rgb(191, 87, 0);
   --dark-blue: rgb(16, 0, 36);
   --primary-font: 'Holtwood One SC', serif;
-  --secondary-font: 'Syncopate', sans-serif;
+  --secondary-font: 'Tenor Sans', sans-serif;
 }
 
 /* main */
@@ -87,6 +87,7 @@ main {
 
 /* items */
 #items {
+  font-style: var(--secondary-font);
   display: flex;
   flex-direction: column;
   flex-basis: 80%;
