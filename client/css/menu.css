@@ -87,7 +87,7 @@ main {
 
 /* items */
 #items {
-  font-style: var(--secondary-font);
+  font-family: var(--secondary-font);
   display: flex;
   flex-direction: column;
   flex-basis: 80%;
