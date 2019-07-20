@@ -154,7 +154,8 @@ function getCategoryItems(itemRow, category) {
   let categoryItems = "";
 
   // determine if the whitelist (filter ins) is on
-  const whiteListOn = !isEmpty(filterIns);
+  const whiteListCount = Object.keys(filterIns).length;
+  const whiteListOn = whiteListCount != 0;
 
   // loop through each category and append its items
   const items = menu[category];
@@ -164,7 +165,7 @@ function getCategoryItems(itemRow, category) {
 
     // determine whether to filter out or in this food item
     let filterOut = false;
-    let filterIn = false;
+    let filterInCount = 0;
     let foodIconIndex = 0;
     while(foodIconIndex < foodIcons.length) {
       // get the food icon
@@ -172,7 +173,7 @@ function getCategoryItems(itemRow, category) {
 
       if(whiteListOn && filterIns[foodIcon]) {
         // this item is whitelisted (filter in)
-        filterIn = true;
+        filterInCount++;
       }
       if(filterOuts[foodIcon]) {
         // this item is blacklisted (filter out)
@@ -180,21 +181,30 @@ function getCategoryItems(itemRow, category) {
       }
       foodIconIndex++;
     }
-    if((whiteListOn && filterIn && !filterOut) || (!whiteListOn && !filterOut)) {
+    if((whiteListOn && filterInCount == whiteListCount && !filterOut)
+      || (!whiteListOn && !filterOut)) {
       // append the item because it obeys the filters
-      categoryItems += `<tr><td>${item}</td></tr>`;
+      categoryItems += formatCategoryItem(items, item);
     }
   });
   return categoryItems;
 }
 
-// return if an object is empty
-function isEmpty(obj) {
-  for(var key in obj) {
-    if(obj.hasOwnProperty(key)) {
-      // the object has a key, so it's not empty
-      return false;
-    }
+// format the category item's HTML
+function formatCategoryItem(items, item) {
+  let filterImages = "";
+
+  // this food item's icons (filters)
+  const foodIcons = items[item];
+
+  // loop through each food icon
+  let foodIconIndex = 0;
+  while(foodIconIndex < foodIcons.length) {
+    // get the food icon, then append it as an image
+    let foodIcon = foodIcons[foodIconIndex];
+    filterImages += `<img id="items-image" src="${foodIcon}">`;
+    foodIconIndex++;
   }
-  return true;
+
+  return `<tr><td>${item}${filterImages}</td></tr>`;
 }
