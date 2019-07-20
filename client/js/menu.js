@@ -139,7 +139,7 @@ function updateMenuItems() {
     `;
 
     // append the items of the category
-    itemRow = appendCategoryItems(itemRow, category);
+    itemRow += getCategoryItems(itemRow, category);
 
     // append the spaces
     itemRow += `<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>`;
@@ -149,8 +149,10 @@ function updateMenuItems() {
   });
 }
 
-// append the category items onto the item table's row
-function appendCategoryItems(itemRow, category) {
+// get the category's items formatted as HTML
+function getCategoryItems(itemRow, category) {
+  let categoryItems = "";
+
   // determine if the whitelist (filter ins) is on
   const whiteListOn = !isEmpty(filterIns);
 
@@ -180,10 +182,10 @@ function appendCategoryItems(itemRow, category) {
     }
     if((whiteListOn && filterIn && !filterOut) || (!whiteListOn && !filterOut)) {
       // append the item because it obeys the filters
-      itemRow += `<tr><td>${item}</td></tr>`;
+      categoryItems += `<tr><td>${item}</td></tr>`;
     }
   });
-  return itemRow;
+  return categoryItems;
 }
 
 // return if an object is empty
