@@ -118,7 +118,7 @@ function toggleFilter(filter) {
     filterDiv.style.opacity = 1.0;
   }
 
-  // update the menu items with the new current filters
+  // update the menu items with the new filters
   updateMenuItems();
 }
 
