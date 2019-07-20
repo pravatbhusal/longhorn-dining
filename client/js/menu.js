@@ -111,11 +111,11 @@ function toggleFilter(filter) {
   if(!filterObj[foodIcon]) {
     // this filter has not been added, so add it into the current filters
     filterObj[foodIcon] = filter;
-    filterDiv.style.opacity = 0.30;
+    filterDiv.style.opacity = 0.7;
   } else {
     // this filter has been added, so remove it from the current filters
     delete filterObj[foodIcon];
-    filterDiv.style.opacity = 1.0;
+    filterDiv.style.opacity = 1;
   }
 
   // update the menu items with the new filters
