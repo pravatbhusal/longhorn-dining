@@ -100,7 +100,7 @@ main {
   filter: alpha(opacity=50);
 }
 #filter {
-  margin-top: 1vw;
+  margin-top: 0.50vw;
   cursor: pointer;
 
   /* animation */
@@ -132,7 +132,7 @@ main {
   display: flex;
   flex-direction: column;
   flex-basis: 75%;
-  height: 765px;
+  height: 750px;
   overflow-y: scroll;
 }
 #items-table {
