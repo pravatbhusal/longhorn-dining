@@ -7,64 +7,72 @@
   --secondary-font: 'Tenor Sans', sans-serif;
 }
 
-/* Header Styles */
-#header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  /* animation */
-  animation-name: fade-in;
-  animation-duration: 1s;
-  align-items: center;
-}
-#header-text {
-  margin: 0px;
-  /* margin-bottom: 15px; */
-  margin-right: 50px;
-  vertical-align: middle;
-  font-size: 6vw;
-  color: var(--burnt-orange);
-  font-family: var(--primary-font);
-}
-#header-logo-container {
-  display: flex;
-  align-items: center;
-}
-#header-logo {
-  width: 10vw;
+@media (orientation: landscape) {
+  /* Header Styles */
+  #header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* animation */
+    animation-name: fade-in;
+    animation-duration: 1s;
+    align-items: center;
+  }
+  #header-text {
+    margin: 0px;
+    /* margin-bottom: 15px; */
+    margin-right: 50px;
+    vertical-align: middle;
+    font-size: 6vw;
+    color: var(--burnt-orange);
+    font-family: var(--primary-font);
+  }
+  #header-logo-container {
+    display: flex;
+    align-items: center;
+  }
+  #header-logo {
+    width: 10vw;
+  }
+
+  /* Button Styles */
+  #button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3vw;
+    /* animation */
+    animation-name: fade-in;
+    animation-duration: 1s;
+  }
+
+  /* when button is selected */
+  #button:hover {
+    opacity: 0.8;
+    filter: alpha(opacity=50);
+    /* For IE8 and earlier */
+  }
+  #button-container {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: 8vw;
+    text-align: center;
+    background-color: var(--burnt-orange);
+  }
+  #button-text {
+    margin-left: 25px;
+    font-size: 3.5vw;
+    color: var(--white);
+    font-family: var(--primary-font);
+  }
 }
 
-/* Button Styles */
-#button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 3vw;
-  /* animation */
-  animation-name: fade-in;
-  animation-duration: 1s;
-}
-
-/* when button is selected */
-#button:hover {
-  opacity: 0.8;
-  filter: alpha(opacity=50);
-  /* For IE8 and earlier */
-}
-#button-container {
-  display: flex;
-  align-items: center;
-  width: 70%;
-  height: 8vw;
-  text-align: center;
-  background-color: var(--burnt-orange);
-}
-#button-text {
-  margin-left: 25px;
-  font-size: 3.5vw;
-  color: var(--white);
-  font-family: var(--primary-font);
+@media (orientation: portrait) {
+  main {
+    background-color: black;
+  }
 }
 
 /* custom fade in animations */
