@@ -35,6 +35,7 @@ fetch(serverURL + "/meal/location/menu", {
     filters = json["Filters"];
     menu = json["Menu"];
     nutrition = json["Nutrition"];
+    console.log(nutrition)
 
     // view the food information
     addFilterButtons(filters, menu);
@@ -45,7 +46,7 @@ fetch(serverURL + "/meal/location/menu", {
   console.log(error);
 });
 
-// add the filter buttons onto the content
+// add the filter buttons onto the content's HTML
 function addFilterButtons(filters) {
   // loop through each filter from the JSON data
   Object.keys(filters).forEach((filter) => {
@@ -93,7 +94,7 @@ function getFilterName(filter) {
   return filterName;
 }
 
-// toggle a filter on the menu
+// toggle a filter on the menu's HTML
 function toggleFilter(filter) {
   // the food icon to the filter
   const foodIcon = filters[filter];
@@ -122,7 +123,7 @@ function toggleFilter(filter) {
   updateMenuItems();
 }
 
-// update the menu items onto the menu
+// update the menu items onto the menu's HTML
 function updateMenuItems() {
   // get the menu items table, then clear all of its children
   const itemsTable = document.getElementById("items-table");
@@ -206,5 +207,40 @@ function formatCategoryItem(items, item) {
     foodIconIndex++;
   }
 
-  return `<tr><td>${item}${filterImages}</td></tr>`;
+  return `<tr><td id="items-text" onclick="updateNutrition('${item}')">
+    ${item}${filterImages}</td></tr>
+  `;
+}
+
+// update the nutrition fact's HTML
+function updateNutrition(item) {
+  let facts = nutrition[item];
+
+  // set the food's name and serving size
+  document.getElementById("nutrition-facts-title").innerHTML = item;
+  let servingSizeText = document.getElementById("serving-size-text");
+  servingSizeText.innerHTML = facts[0];
+
+  // update the cholestrol, sodium, and protein facts
+  document.getElementById("cholestrol-text").innerHTML = facts[6];
+  document.getElementById("sodium-text").innerHTML = facts[7];
+  document.getElementById("protein-text").innerHTML = facts[11];
+
+  // update the calorie facts
+  let caloriesText = document.getElementById("calories-text");
+  let caloriesSubText = document.getElementById("calories-subtext");
+  caloriesText.innerHTML = facts[2].split("\n")[0];
+  caloriesSubText.innerHTML = facts[2].split("\n")[1];
+
+  // update the fats facts
+  let fatsText = document.getElementById("fats-text");
+  let fatsSubtext = document.getElementById("fats-subtext");
+  fatsText.innerHTML = facts[3];
+  fatsSubtext.innerHTML = facts[4] + ", " + facts[5];
+
+  // update the carbohydrate facts
+  let carbsText = document.getElementById("carbs-text");
+  let carbsSubtext = document.getElementById("carbs-subtext");
+  carbsText.innerHTML = facts[8];
+  carbsSubtext.innerHTML = facts[9] + ", " + facts[10];
 }
