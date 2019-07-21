@@ -1,4 +1,4 @@
-# Author:
+# Authors:
 # Nikhil Kumar & Pravat Bhusal
 
 # server imports
@@ -45,6 +45,7 @@ def menu():
     menu_url = dining_url + "select?meal=" + meal + "&loc=" + location
     return parse_menu(menu_url)
 
+# code to be executed when the server is run
 if __name__ == "__main__":
     # read the server config file
     server_json = json.load(open("../config/server.json", "r+"))

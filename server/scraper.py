@@ -1,4 +1,5 @@
-# Authors: Nikhil Kumar & Pravat Bhusal
+# Authors: 
+# Nikhil Kumar & Pravat Bhusal
 
 # url imports
 import urllib.request, urllib.error
@@ -20,12 +21,14 @@ def request_is_valid(url):
         print('HTTPError: {}'.format(e.code))
         print('The requested URL was not found on the server.')
         return False
+
     # second case for when the error is not HTTP-specific (e.g. connection refused)
     except urllib.error.URLError as e:
         # print the error and a message for the user signifying an unknown problem has occurred
         print('URLError: {}'.format(e.reason))
         print('A connection to the server could not be made. Please try again later')
         return False
+
     # success, no other operations required by the function
     else:
         return True
