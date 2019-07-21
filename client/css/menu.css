@@ -89,6 +89,26 @@ main {
   background-color:black;
 }
 
+/* search */
+#search-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.50vw;
+}
+#search-input-text {
+  font-family: var(--secondary-font);
+  width: 70%;
+  padding: 5px;
+}
+#search-btn {
+  font-family: var(--primary-font);
+  font-size: 0.90vw;
+  width: 30%;
+  color: var(--white);
+  background-color: var(--burnt-orange);
+  border-color: var(--burnt-orange);
+}
+
 /* filters */
 #filters {
   display: flex;

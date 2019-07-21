@@ -39,7 +39,7 @@ fetch(serverURL + "/meal/location/menu", {
 
     // view the food information
     addFilterButtons(filters, menu);
-    updateMenuItems(menu);
+    updateMenuItems();
   });
 }).catch((error) => {
   // an error occurred when fetching the data
@@ -124,7 +124,7 @@ function toggleFilter(filter) {
 }
 
 // update the menu items onto the menu's HTML
-function updateMenuItems() {
+function updateMenuItems(search) {
   // get the menu items table, then clear all of its children
   const itemsTable = document.getElementById("items-table");
   while(itemsTable.firstChild) {
@@ -140,7 +140,7 @@ function updateMenuItems() {
     `;
 
     // append the items of the category
-    itemRow += getCategoryItems(itemRow, category);
+    itemRow += getCategoryItems(itemRow, category, search);
 
     // append the spaces
     itemRow += `<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>`;
@@ -151,7 +151,7 @@ function updateMenuItems() {
 }
 
 // get the category's items formatted as HTML
-function getCategoryItems(itemRow, category) {
+function getCategoryItems(itemRow, category, search) {
   let categoryItems = "";
 
   // determine if the whitelist (filter ins) is on
@@ -168,20 +168,29 @@ function getCategoryItems(itemRow, category) {
     let filterOut = false;
     let filterInCount = 0;
     let foodIconIndex = 0;
-    while(foodIconIndex < foodIcons.length) {
-      // get the food icon
-      let foodIcon = foodIcons[foodIconIndex];
+    
+    // if search is enabled and the item is not searched, then filter it out
+    let itemLowerCase = item.toString().toLowerCase();
+    let searchLowerCase = search ? search.toString().toLowerCase() : undefined;
+    if(search && itemLowerCase.indexOf(searchLowerCase) == -1) {
+      filterOut = true;
+    } else {
+      while(foodIconIndex < foodIcons.length) {
+        // get the food icon
+        let foodIcon = foodIcons[foodIconIndex];
 
-      if(whiteListOn && filterIns[foodIcon]) {
-        // this item is whitelisted (filter in)
-        filterInCount++;
+        if(whiteListOn && filterIns[foodIcon]) {
+          // this item is whitelisted (filter in)
+          filterInCount++;
+        }
+        if(filterOuts[foodIcon]) {
+          // this item is blacklisted (filter out)
+          filterOut = true;
+        }
+        foodIconIndex++;
       }
-      if(filterOuts[foodIcon]) {
-        // this item is blacklisted (filter out)
-        filterOut = true;
-      }
-      foodIconIndex++;
     }
+
     if((whiteListOn && filterInCount == whiteListCount && !filterOut)
       || (!whiteListOn && !filterOut)) {
       // append the item because it obeys the filters
@@ -208,7 +217,8 @@ function formatCategoryItem(items, item) {
   }
 
   return `<tr><td id="items-text" onclick="updateNutrition('${item}')">
-    ${item}${filterImages}</td></tr>
+    ${item}${filterImages}</td>
+  </tr>
   `;
 }
 
@@ -243,4 +253,10 @@ function updateNutrition(item) {
   let carbsSubtext = document.getElementById("carbs-subtext");
   carbsText.innerHTML = facts[8];
   carbsSubtext.innerHTML = facts[9] + ", " + facts[10];
+}
+
+// update the search menu's HTML
+function updateSearchMenu() {
+  var search = document.getElementById("search-input-text").value;
+  updateMenuItems(search);
 }
