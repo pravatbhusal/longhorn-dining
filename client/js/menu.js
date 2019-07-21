@@ -39,9 +39,10 @@ fetch(serverURL + "/meal/location/menu", {
     // view the food information
     addFilterButtons(filters, menu);
     updateMenuItems();
+  }).catch((error) => {
+    alert("Failed to receive the information from the server.");
   });
 }).catch((error) => {
-  // an error occurred when fetching the data
   alert("Failed to receive the information from the server.");
 });
 

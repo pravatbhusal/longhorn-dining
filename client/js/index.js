@@ -5,9 +5,10 @@ fetch(serverURL + "/meal").then((data) => {
     Object.keys(json).forEach((meal) => {
       addButton(meal, json[meal]);
     });
+  }).catch((error) => {
+    alert("Failed to receive the information from the server.");
   });
 }).catch((error) => {
-  // an error occurred when fetching the data
   alert("Failed to receive the information from the server.");
 });
 
