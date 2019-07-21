@@ -7,6 +7,7 @@
   --secondary-font: 'Tenor Sans', sans-serif;
 }
 
+/* Primary orientation */
 @media (orientation: landscape) {
   /* Header Styles */
   #header {
@@ -69,9 +70,69 @@
   }
 }
 
+/* Mobile orientation */
 @media (orientation: portrait) {
-  main {
-    background-color: black;
+  /* Header Styles */
+  #header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* animation */
+    animation-name: fade-in;
+    animation-duration: 1s;
+    align-items: center;
+  }
+  #header-text {
+    margin: 0px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12vw;
+    color: var(--burnt-orange);
+    font-family: var(--primary-font);
+  }
+  #header-logo-container {
+    display: flex;
+    align-items: center;
+  }
+  #header-logo {
+    width: 20vw;
+  }
+
+  /* Button Styles */
+  #button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3vw;
+    /* animation */
+    animation-name: fade-in;
+    animation-duration: 1s;
+  }
+
+  /* when button is selected */
+  #button:hover {
+    opacity: 0.8;
+    filter: alpha(opacity=50);
+    /* For IE8 and earlier */
+  }
+  #button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    height: 15vw;
+    background-color: var(--burnt-orange);
+    align-content: center;
+    text-align: center;
+  }
+  #button-text {
+    /* margin-left: 25px; */
+    margin: 0px;
+    font-size: 5vw;
+    margin-top: 3vw;
+    color: var(--white);
+    font-family: var(--primary-font);
   }
 }
 
