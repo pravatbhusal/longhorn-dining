@@ -22,8 +22,11 @@ var nutrition = undefined;
 var filterOuts = {};
 var filterIns = {};
 
+// food quantities added by the user
+var foodQuantities = {};
+
 // total amount of nutrition value of each food item added by the user
-totalNutrition = {"Calories": 0, "Calories from Fat": 0, "Total Fat": 0,
+var totalNutrition = {"Calories": 0, "Calories from Fat": 0, "Total Fat": 0,
   "Saturated Fat": 0, "Trans Fat": 0, "Cholestrol": 0, "Sodium": 0,
   "Total Carbohydrate": 0, "Dietary Fiber": 0, "Sugars": 0, "Protein": 0};
 
@@ -205,20 +208,17 @@ function getCategoryItems(itemRow, category, search) {
     if((whiteListOn && filterInCount == whiteListCount && !filterOut)
       || (!whiteListOn && !filterOut)) {
       // append the item because it obeys the filters
-      categoryItems += formatCategoryItem(items, item);
+      categoryItems += formatCategoryItem(items[item], item);
     }
   });
   return categoryItems;
 }
 
 // format the category item's HTML
-function formatCategoryItem(items, item) {
+function formatCategoryItem(foodIcons, item) {
   let filterImages = "";
 
-  // this food item's icons (filters)
-  const foodIcons = items[item];
-
-  // loop through each food icon
+  // loop through each food icon (filter)
   let foodIconIndex = 0;
   while(foodIconIndex < foodIcons.length) {
     // get the food icon, then append it as an image
@@ -227,6 +227,8 @@ function formatCategoryItem(items, item) {
     foodIconIndex++;
   }
 
+  // the quantity of this item if the user added a quantity
+  let quantity = foodQuantities[item] ? foodQuantities[item] : 0;
   return `
   <tr>
     <td id="item-row">
@@ -236,7 +238,7 @@ function formatCategoryItem(items, item) {
       ${filterImages}
       <div id="item-step-container">
         <button onclick="addFoodItem('${item}', -1)" id="standard-btn">-</button>
-        <span data-quantity="${item}" id="item-quantity-text">0</span>
+        <span data-quantity="${item}" id="item-quantity-text">${quantity}</span>
         <button onclick="addFoodItem('${item}', 1)" id="standard-btn">+</button>
       </div>
     </td>
@@ -327,7 +329,8 @@ function addFoodItem(item, quantity) {
   }
   updateTotalNutrition(item, quantity);
 
-  // set the quantity text
+  // set the food quantity
+  foodQuantities[item] = newQuantity;
   quantityText.innerHTML = newQuantity;
 }
 
@@ -362,7 +365,8 @@ function updateTotalNutrition(item, quantity) {
 
 // reset the total nutrition values
 function resetTotalNutrition() {
-  // reset the total nutrition variable
+  // reset the food quantities and total nutrition
+  foodQuantities = {};
   totalNutrition = {"Calories": 0, "Calories from Fat": 0, "Total Fat": 0,
     "Saturated Fat": 0, "Trans Fat": 0, "Cholestrol": 0, "Sodium": 0,
     "Total Carbohydrate": 0, "Dietary Fiber": 0, "Sugars": 0, "Protein": 0};
