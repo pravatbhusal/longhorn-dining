@@ -1,13 +1,34 @@
 # Authors: Nikhil Kumar & Pravat Bhusal
 
 # url imports
-import urllib.request
+import urllib.request, urllib.error
 from urllib.parse import urlparse, parse_qs
 
 # file imports
 import os
 import json
 from bs4 import BeautifulSoup
+
+# verify that urlopen worked successfully without any errors
+def request_is_valid(url):
+    try:
+        req = urllib.request.urlopen(url)
+
+    # most common case for when the URL is not found on the server
+    except urllib.error.HTTPError as e:
+        # print error code and a message that the URL was not found on the server
+        print('HTTPError: {}'.format(e.code))
+        print('The requested URL was not found on the server.')
+        return False
+    # second case for when the error is not HTTP-specific (e.g. connection refused)
+    except urllib.error.URLError as e:
+        # print the error and a message for the user signifying an unknown problem has occurred
+        print('URLError: {}'.format(e.reason))
+        print('A connection to the server could not be made. Please try again later')
+        return False
+    # success, no other operations required by the function    
+    else:
+        return True
 
 # parse a meals URL
 def parse_meals(url):
