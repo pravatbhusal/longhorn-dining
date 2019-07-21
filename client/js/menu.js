@@ -35,7 +35,6 @@ fetch(serverURL + "/meal/location/menu", {
     filters = json["Filters"];
     menu = json["Menu"];
     nutrition = json["Nutrition"];
-    console.log(nutrition)
 
     // view the food information
     addFilterButtons(filters, menu);
@@ -43,7 +42,7 @@ fetch(serverURL + "/meal/location/menu", {
   });
 }).catch((error) => {
   // an error occurred when fetching the data
-  console.log(error);
+  alert("Failed to receive the information from the server.");
 });
 
 // add the filter buttons onto the content's HTML
@@ -168,7 +167,7 @@ function getCategoryItems(itemRow, category, search) {
     let filterOut = false;
     let filterInCount = 0;
     let foodIconIndex = 0;
-    
+
     // if search is enabled and the item is not searched, then filter it out
     let itemLowerCase = item.toString().toLowerCase();
     let searchLowerCase = search ? search.toString().toLowerCase() : undefined;

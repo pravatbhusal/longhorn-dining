@@ -8,7 +8,7 @@ fetch(serverURL + "/meal").then((data) => {
   });
 }).catch((error) => {
   // an error occurred when fetching the data
-  console.log(error);
+  alert("Failed to receive the information from the server.");
 });
 
 // go to a meal page
