@@ -22,20 +22,10 @@ var nutrition = undefined;
 var filterOuts = {};
 var filterIns = {};
 
-// total amount of nutrition added by the user
-var totalNutrition = {
-  "Calories": 0,
-  "Calories from Fat": 0,
-  "Total Fat": 0,
-  "Saturated Fat": 0,
-  "Trans Fat": 0,
-  "Cholestrol": 0,
-  "Sodium": 0,
-  "Total Carbohydrate": 0,
-  "Dietary Fiber": 0,
-  "Sugars": 0,
-  "Protein": 0
-};
+// total amount of nutrition value of each food item added by the user
+totalNutrition = {"Calories": 0, "Calories from Fat": 0, "Total Fat": 0,
+  "Saturated Fat": 0, "Trans Fat": 0, "Cholestrol": 0, "Sodium": 0,
+  "Total Carbohydrate": 0, "Dietary Fiber": 0, "Sugars": 0, "Protein": 0};
 
 // send an HTTP request to receive the items
 fetch(serverURL + "/meal/location/menu", {
@@ -245,9 +235,9 @@ function formatCategoryItem(items, item) {
       </span>
       ${filterImages}
       <div id="item-step-container">
-        <button onclick="updateFoodList('${item}', -1)" id="item-step-btn">-</button>
+        <button onclick="addFoodItem('${item}', -1)" id="standard-btn">-</button>
         <span data-quantity="${item}" id="item-quantity-text">0</span>
-        <button onclick="updateFoodList('${item}', 1)" id="item-step-btn">+</button>
+        <button onclick="addFoodItem('${item}', 1)" id="standard-btn">+</button>
       </div>
     </td>
   </tr>
@@ -290,7 +280,7 @@ function updateNutritionItem(item) {
 // update the nutrition fact's HTML based on the total nutrition list
 function updateNutritionFoodList() {
   // set the food's name and serving size
-  document.getElementById("nutrition-facts-title").innerHTML = "Total Nutrition Facts";
+  document.getElementById("nutrition-facts-title").innerHTML = "Nutrition Facts";
   let servingSizeText = document.getElementById("serving-size-text");
   servingSizeText.innerHTML = "";
 
@@ -320,35 +310,34 @@ function updateNutritionFoodList() {
   let carbsSubtext = document.getElementById("carbs-subtext");
   carbsText.innerHTML = "Total Carbohydrate " + totalNutrition["Total Carbohydrate"] + "g";
   carbsSubtext.innerHTML = "Dietary Fiber " + totalNutrition["Dietary Fiber"] +
-    "g, " + "Sugars " + totalNutrition["Sugars"];
+    "g, " + "Sugars " + totalNutrition["Sugars"] + "g";
 }
 
-// update the food item list
-function updateFoodList(item, quantityChange) {
+// add a food item to the total nutrition
+function addFoodItem(item, quantity) {
   // receive quantity of the food item
   const quantityText = document.querySelector(`[data-quantity='${item}']`);
-  let newQuantity = parseInt(quantityText.innerText) + quantityChange;
+  let newQuantity = parseInt(quantityText.innerText) + quantity;
 
   // update the total nutritional facts
-  let facts = nutrition[item];
   if(newQuantity < 0) {
     // reset the quantities
     newQuantity = 0;
-    quantityChange = 0;
+    quantity = 0;
   }
-  updateTotalNutrition(facts, quantityChange);
+  updateTotalNutrition(item, quantity);
 
   // set the quantity text
   quantityText.innerHTML = newQuantity;
-
-  updateNutritionFoodList();
 }
 
-// update the total nutritional value (number)
-function updateTotalNutrition(facts, quantityChange) {
+// update the total nutritional values based on a food item
+function updateTotalNutrition(item, quantity) {
+  let facts = nutrition[item];
+
   // return the quantified nutritional value from a nutrition string
   function getValue(fact) {
-    return quantityChange * parseInt(fact.match(/\d+/)[0]);
+    return quantity * parseInt(fact.match(/\d+/)[0]);
   }
 
   // update the calories
@@ -369,4 +358,19 @@ function updateTotalNutrition(facts, quantityChange) {
   totalNutrition["Total Carbohydrate"] += getValue(facts[8]);
   totalNutrition["Dietary Fiber"] += getValue(facts[9]);
   totalNutrition["Sugars"] += getValue(facts[10]);
+}
+
+// reset the total nutrition values
+function resetTotalNutrition() {
+  // reset the total nutrition variable
+  totalNutrition = {"Calories": 0, "Calories from Fat": 0, "Total Fat": 0,
+    "Saturated Fat": 0, "Trans Fat": 0, "Cholestrol": 0, "Sodium": 0,
+    "Total Carbohydrate": 0, "Dietary Fiber": 0, "Sugars": 0, "Protein": 0};
+  updateNutritionFoodList();
+
+  // reset all the quantity texts
+  let quantityTexts = document.querySelectorAll("[id=item-quantity-text]");
+  for(let textIndex = 0; textIndex < quantityTexts.length; textIndex++) {
+    quantityTexts[textIndex].innerHTML = 0;
+  }
 }

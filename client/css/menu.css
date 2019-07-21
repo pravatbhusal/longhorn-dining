@@ -22,6 +22,15 @@ main {
   height: auto;
 }
 
+/* standard button */
+#standard-btn {
+  color: var(--white);
+  background-color: var(--burnt-orange);
+  border-color: var(--burnt-orange);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 /* header */
 #header {
   display: flex;
@@ -91,8 +100,6 @@ main {
 
 /* search */
 #search-container {
-  display: flex;
-  flex-direction: row;
   margin-top: 0.50vw;
 
   /* animation */
@@ -103,6 +110,15 @@ main {
   font-family: var(--secondary-font);
   width: 100%;
   padding: 5px;
+}
+
+/* total nutrition */
+#total-nutrition-container {
+  margin-top: 0.50vw;
+
+  /* animation */
+  animation-name: fade-in;
+  animation-duration: 1s;
 }
 
 /* filters */
@@ -170,13 +186,6 @@ main {
 }
 #item-step-container {
   margin-left: 10px;
-}
-#item-step-btn {
-  color: var(--white);
-  background-color: var(--burnt-orange);
-  border-color: var(--burnt-orange);
-  border-radius: 5px;
-  cursor: pointer;
 }
 #item-quantity-text {
   font-family: var(--secondary-font);
