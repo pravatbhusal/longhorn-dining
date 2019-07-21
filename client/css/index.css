@@ -43,6 +43,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 3vw;
+    cursor: pointer;
     /* animation */
     animation-name: fade-in;
     animation-duration: 1s;
@@ -105,6 +106,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 3vw;
+    cursor: pointer;
     /* animation */
     animation-name: fade-in;
     animation-duration: 1s;

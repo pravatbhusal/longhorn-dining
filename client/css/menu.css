@@ -101,6 +101,7 @@ main {
 }
 #filter {
   margin-top: 1vw;
+  cursor: pointer;
 
   /* animation */
   animation-name: fade-in;
@@ -145,6 +146,7 @@ main {
 }
 #items-text {
   color: var(--light-blue);
+  cursor: pointer;
 }
 
 /* custom fade in animations */
