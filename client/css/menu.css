@@ -112,15 +112,6 @@ main {
   padding: 5px;
 }
 
-/* total nutrition */
-#total-nutrition-container {
-  margin-top: 0.50vw;
-
-  /* animation */
-  animation-name: fade-in;
-  animation-duration: 1s;
-}
-
 /* filters */
 #filters {
   display: flex;
@@ -190,6 +181,16 @@ main {
 #item-quantity-text {
   font-family: var(--secondary-font);
   color: var(--burnt-orange);
+}
+
+/* total nutrition */
+#total-nutrition-container {
+  margin-top: 10px;
+  margin-left: 20px;
+
+  /* animation */
+  animation-name: fade-in;
+  animation-duration: 1s;
 }
 
 /* custom fade in animations */
