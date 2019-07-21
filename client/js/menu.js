@@ -22,6 +22,21 @@ var nutrition = undefined;
 var filterOuts = {};
 var filterIns = {};
 
+// total amount of nutrition added by the user
+var totalNutrition = {
+  "Calories": 0,
+  "Calories from Fat": 0,
+  "Total Fat": 0,
+  "Saturated Fat": 0,
+  "Trans Fat": 0,
+  "Cholestrol": 0,
+  "Sodium": 0,
+  "Total Carbohydrate": 0,
+  "Dietary Fiber": 0,
+  "Sugars": 0,
+  "Protein": 0
+};
+
 // send an HTTP request to receive the items
 fetch(serverURL + "/meal/location/menu", {
   method: "POST",
@@ -40,7 +55,7 @@ fetch(serverURL + "/meal/location/menu", {
     addFilterButtons(filters, menu);
     updateMenuItems();
   }).catch((error) => {
-    alert("Failed to receive the information from the server.");
+    alert("Failed to receive information from UT. Check back later!");
   });
 }).catch((error) => {
   alert("Failed to receive the information from the server.");
@@ -121,6 +136,12 @@ function toggleFilter(filter) {
 
   // update the menu items with the new filters
   updateMenuItems();
+}
+
+// update the search menu's HTML
+function updateSearchMenu() {
+  var search = document.getElementById("search-input-text").value;
+  updateMenuItems(search);
 }
 
 // update the menu items onto the menu's HTML
@@ -212,18 +233,29 @@ function formatCategoryItem(items, item) {
   while(foodIconIndex < foodIcons.length) {
     // get the food icon, then append it as an image
     let foodIcon = foodIcons[foodIconIndex];
-    filterImages += `<img id="items-image" src="${foodIcon}">`;
+    filterImages += `<img id="item-image" src="${foodIcon}">`;
     foodIconIndex++;
   }
 
-  return `<tr><td id="items-text" onclick="updateNutrition('${item}')">
-    ${item}${filterImages}</td>
+  return `
+  <tr>
+    <td id="item-row">
+      <span id="item-text" onclick="updateNutritionItem('${item}')">
+        ${item}
+      </span>
+      ${filterImages}
+      <div id="item-step-container">
+        <button onclick="updateFoodList('${item}', -1)" id="item-step-btn">-</button>
+        <span data-quantity="${item}" id="item-quantity-text">0</span>
+        <button onclick="updateFoodList('${item}', 1)" id="item-step-btn">+</button>
+      </div>
+    </td>
   </tr>
   `;
 }
 
-// update the nutrition fact's HTML
-function updateNutrition(item) {
+// update the nutrition fact's HTML based on an item
+function updateNutritionItem(item) {
   let facts = nutrition[item];
 
   // set the food's name and serving size
@@ -255,8 +287,86 @@ function updateNutrition(item) {
   carbsSubtext.innerHTML = facts[9] + ", " + facts[10];
 }
 
-// update the search menu's HTML
-function updateSearchMenu() {
-  var search = document.getElementById("search-input-text").value;
-  updateMenuItems(search);
+// update the nutrition fact's HTML based on the total nutrition list
+function updateNutritionFoodList() {
+  // set the food's name and serving size
+  document.getElementById("nutrition-facts-title").innerHTML = "Total Nutrition Facts";
+  let servingSizeText = document.getElementById("serving-size-text");
+  servingSizeText.innerHTML = "";
+
+  // update the cholestrol, sodium, and protein facts
+  document.getElementById("cholestrol-text").innerHTML =
+    "Cholestrol " + totalNutrition["Cholestrol"] + "mg";
+  document.getElementById("sodium-text").innerHTML =
+    "Sodium " + totalNutrition["Sodium"] + "mg";
+  document.getElementById("protein-text").innerHTML =
+    "Protein " + totalNutrition["Protein"] + "g";
+
+  // update the calorie facts
+  let caloriesText = document.getElementById("calories-text");
+  let caloriesSubText = document.getElementById("calories-subtext");
+  caloriesText.innerHTML = "Calories " + totalNutrition["Calories"];
+  caloriesSubText.innerHTML = "Calories from Fat " + totalNutrition["Calories from Fat"];
+
+  // update the fats facts
+  let fatsText = document.getElementById("fats-text");
+  let fatsSubtext = document.getElementById("fats-subtext");
+  fatsText.innerHTML = "Total Fat " + totalNutrition["Total Fat"] + "g";
+  fatsSubtext.innerHTML = "Saturated Fat " + totalNutrition["Saturated Fat"] +
+    "g, Trans Fat " + totalNutrition["Trans Fat"] + "g";
+
+  // update the carbohydrate facts
+  let carbsText = document.getElementById("carbs-text");
+  let carbsSubtext = document.getElementById("carbs-subtext");
+  carbsText.innerHTML = "Total Carbohydrate " + totalNutrition["Total Carbohydrate"] + "g";
+  carbsSubtext.innerHTML = "Dietary Fiber " + totalNutrition["Dietary Fiber"] +
+    "g, " + "Sugars " + totalNutrition["Sugars"];
+}
+
+// update the food item list
+function updateFoodList(item, quantityChange) {
+  // receive quantity of the food item
+  const quantityText = document.querySelector(`[data-quantity='${item}']`);
+  let newQuantity = parseInt(quantityText.innerText) + quantityChange;
+
+  // update the total nutritional facts
+  let facts = nutrition[item];
+  if(newQuantity < 0) {
+    // reset the quantities
+    newQuantity = 0;
+    quantityChange = 0;
+  }
+  updateTotalNutrition(facts, quantityChange);
+
+  // set the quantity text
+  quantityText.innerHTML = newQuantity;
+
+  updateNutritionFoodList();
+}
+
+// update the total nutritional value (number)
+function updateTotalNutrition(facts, quantityChange) {
+  // return the quantified nutritional value from a nutrition string
+  function getValue(fact) {
+    return quantityChange * parseInt(fact.match(/\d+/)[0]);
+  }
+
+  // update the calories
+  totalNutrition["Calories"] += getValue(facts[2].split("\n")[0]);
+  totalNutrition["Calories from Fat"] += getValue(facts[2].split("\n")[1]);
+
+  // update the fats
+  totalNutrition["Total Fat"] += getValue(facts[3])
+  totalNutrition["Saturated Fat"] += getValue(facts[4]);
+  totalNutrition["Trans Fat"] += getValue(facts[5]);
+
+  // update the cholestrol, sodium, and protein
+  totalNutrition["Cholestrol"] += getValue(facts[6]);
+  totalNutrition["Sodium"] += getValue(facts[7]);;
+  totalNutrition["Protein"] += getValue(facts[11]);
+
+  // update the carbohydrates
+  totalNutrition["Total Carbohydrate"] += getValue(facts[8]);
+  totalNutrition["Dietary Fiber"] += getValue(facts[9]);
+  totalNutrition["Sugars"] += getValue(facts[10]);
 }

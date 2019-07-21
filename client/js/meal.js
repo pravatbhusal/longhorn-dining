@@ -21,7 +21,7 @@ fetch(serverURL + "/meal/location", {
       addButton(location, json[meal]);
     });
   }).catch((error) => {
-    alert("Failed to receive the information from the server.");
+    alert("Failed to receive information from UT. Check back later!");
   });
 }).catch((error) => {
   alert("Failed to receive the information from the server.");

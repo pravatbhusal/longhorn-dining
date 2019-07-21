@@ -94,6 +94,10 @@ main {
   display: flex;
   flex-direction: row;
   margin-top: 0.50vw;
+
+  /* animation */
+  animation-name: fade-in;
+  animation-duration: 1s;
 }
 #search-input-text {
   font-family: var(--secondary-font);
@@ -148,17 +152,35 @@ main {
   overflow-y: scroll;
 }
 #items-table {
-  margin-top: 15px;
+  margin-top: 10px;
   margin-left: 20px;
 }
-#items-image {
+#item-row {
+  display: flex;
+  flex-direction: row;
+}
+#item-text {
+  color: var(--light-blue);
+  cursor: pointer;
+}
+#item-image {
   width: 24;
   height: 24;
   margin-left: 5px;
 }
-#items-text {
-  color: var(--light-blue);
+#item-step-container {
+  margin-left: 10px;
+}
+#item-step-btn {
+  color: var(--white);
+  background-color: var(--burnt-orange);
+  border-color: var(--burnt-orange);
+  border-radius: 5px;
   cursor: pointer;
+}
+#item-quantity-text {
+  font-family: var(--secondary-font);
+  color: var(--burnt-orange);
 }
 
 /* custom fade in animations */

@@ -133,6 +133,11 @@ def parse_menu(url):
                 # append the food names
                 if line.startswith('<span>') and 'Calories' not in line:
                     food_name = process_line(line, '>', '</', 1, 0)
+
+                    # modify the food name to prevent parsing errors
+                    food_name = food_name.replace("&amp;", "&")
+                    food_name = food_name.replace('"', "in.")
+
                     menu[category][food_name] = list()
 
                 # append the food icons
