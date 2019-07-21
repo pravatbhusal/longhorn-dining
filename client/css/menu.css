@@ -49,6 +49,28 @@ main {
   display: flex;
 }
 
+/* nutrition facts */
+#nutrition-facts {
+  position:absolute;
+  width: 450px;
+  height: 300px;
+  bottom: -10%;
+  right: 10%;
+  /* background-color: black; */
+  border-color: black;
+  border-width: thick;
+  border-style: solid;
+}
+
+#nutrition-facts-text {
+  font-family: var(--secondary-font);
+  margin: 20px;
+}
+
+#nutrition-facts-title {
+  font-weight: 1000;
+  font-size: 24px;
+}
 /* filters */
 #filters {
   display: flex;
