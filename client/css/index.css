@@ -7,16 +7,27 @@
   --secondary-font: 'Tenor Sans', sans-serif;
 }
 
-/* Footer Styles */
-#footer {
+/* HTML and Body Styles */
+html, body {
   display: flex;
   flex-direction: column;
-  width: 100%
+  height: 100%;
+}
+
+/* Main Styles */
+main {
+  flex: 1 1 auto;
+}
+
+/* Footer Styles */
+footer {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 70px;
+  width: 100%;
 }
 #credits-text {
-  position: absolute;
   align-self: center;
-  bottom: 20px;
   font-family: var(--secondary-font);
   color: var(--burnt-orange);
   /* animation */
