@@ -320,8 +320,8 @@ main {
   #search-container {
     display: flex;
     flex-direction: column;
-    margin-top: 0.50vw;
-    margin-bottom: 0.50vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
     align-items: center;
     /* animation */
     animation-name: fade-in;
