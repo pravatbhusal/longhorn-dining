@@ -33,8 +33,8 @@ def request_is_valid(url):
     else:
         return True
 
-# parse a meals URL
-def parse_meals(url):
+# parse a meals URL and return JSON that maps location routes
+def parse_meals(url, route, format_url):
     if request_is_valid(url):
         # receive the domain of the URL
         parsed_url = urlparse(url)
@@ -52,7 +52,8 @@ def parse_meals(url):
         for source_text in soup.find_all('div', {"class": "jumbotron"}):
             # map each meal's URL into the meals dictionary
             meal = str(source_text.h1.strong.text)
-            meals[meal] = domain + 'location?meal=' + meal
+            values = dict(meal=meal)
+            meals[meal] = format_url(route, values)
 
         # converts the meals dictionary into JSON
         meals_json = json.dumps(meals)
@@ -60,15 +61,16 @@ def parse_meals(url):
     else:
         return "An error occurred when receiving the meals from the URL."
 
-# parse a location URL
-def parse_locations(url):
+# parse a location URL and return JSON that maps menu routes
+def parse_locations(url, route, format_url):
     if request_is_valid(url):
         # receive the domain of the URL
         parsed_url = urlparse(url)
         domain = '{uri.scheme}://{uri.netloc}/'.format(uri=parsed_url)
 
         # parse the meal from the URL
-        meal = parse_qs(parsed_url.query)['meal'][0]
+        meal_param = route["GETParams"][0]
+        meal = parse_qs(parsed_url.query)[meal_param][0]
 
         # dictionary to store the locations
         locations = dict()
@@ -82,7 +84,8 @@ def parse_locations(url):
         for source_text in soup.find_all('div', {"class": "jumbotron"}):
             # map each location URL into the locations dictionary
             location = str(source_text.h1.strong.text)
-            locations[location] = domain + 'select?meal=' + meal + '&loc=' + location
+            values = dict(meal=meal, loc=location)
+            locations[location] = format_url(route, values)
 
         # converts the locations dictionary into JSON
         locations_json = json.dumps(locations)
@@ -90,7 +93,7 @@ def parse_locations(url):
     else:
         return "An error occurred when receiving the locations from the URL."
 
-# parse a URL menu
+# parse a URL menu and return JSON data with the food information
 def parse_menu(url):
     if request_is_valid(url):
         # makes a request to the given URL and stores the response

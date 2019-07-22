@@ -1,3 +1,16 @@
 {
-  "url": "http://hf-foodapp.austin.utexas.edu/"
+  "url": "http://hf-foodapp.austin.utexas.edu/",
+  "routes": {
+    "root": {
+      "name": "meal"
+    },
+    "location": {
+      "name": "location",
+      "GETParams": ["meal"]
+    },
+    "menu": {
+      "name": "select",
+      "GETParams": ["meal", "loc"]
+    }
+  }
 }

@@ -16,11 +16,24 @@ import json
 # read the scraper config file
 scraper_json = json.load(open("../config/scraper.json", "r+"))
 dining_url = scraper_json["url"]
+routes = scraper_json["routes"]
+
+# format a URL with its GET parameters
+def format_url(route, values):
+    url = dining_url + route["name"] + "?"
+
+    # iterate through each GET parameter and its values
+    get_params = route["GETParams"]
+    for param in get_params:
+        value = values[param]
+        url += param + "=" + value + "&"
+
+    return url
 
 # meal selection route
 @server.route("/meal", methods=['GET'])
 def meal():
-    return parse_meals(dining_url)
+    return parse_meals(dining_url, routes["location"], format_url)
 
 # locations route
 @server.route("/meal/location", methods=['POST'])
@@ -30,8 +43,9 @@ def location():
     meal = data["meal"]
 
     # format the locations URL
-    locations_url = dining_url + "location?meal=" + meal
-    return parse_locations(locations_url)
+    values = dict(meal=meal)
+    location_url = format_url(routes["location"], values)
+    return parse_locations(location_url, routes["menu"], format_url)
 
 # menu route
 @server.route("/meal/location/menu", methods=['POST'])
@@ -42,7 +56,8 @@ def menu():
     location = data["location"]
 
     # format the menu URL
-    menu_url = dining_url + "select?meal=" + meal + "&loc=" + location
+    values = dict(meal=meal, loc=location)
+    menu_url = format_url(routes["menu"], values)
     return parse_menu(menu_url)
 
 # code to be executed when the server is run
