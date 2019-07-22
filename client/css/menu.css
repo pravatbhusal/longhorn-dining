@@ -54,14 +54,9 @@ main {
   font-family: var(--primary-font);
 }
 
-/* menu */
-#menu {
-  display: flex;
-}
-
 /* nutrition facts */
 #nutrition-facts {
-  position:absolute;
+  position: absolute;
   width: 450px;
   height: 300px;
   bottom: 0%;
@@ -96,6 +91,11 @@ main {
   height: 2px;
   margin-bottom: 10px;
   background-color:black;
+}
+
+/* menu */
+#menu {
+  display: flex;
 }
 
 /* search */
@@ -138,8 +138,8 @@ main {
   background-color: var(--burnt-orange);
 }
 #filter-image {
-  width: 32;
-  height: 32;
+  width: 32px;
+  height: 32px;
   margin-left: 15px;
 }
 #filter-text {
@@ -171,8 +171,8 @@ main {
   cursor: pointer;
 }
 #item-image {
-  width: 24;
-  height: 24;
+  width: 24px;
+  height: 24px;
   margin-left: 5px;
 }
 #item-step-container {
@@ -202,6 +202,94 @@ main {
 }
 .total-nutrition-btn {
   margin-right: 5px;
+}
+
+/* Mobile orientation */
+@media (orientation: portrait) {
+  /* content */
+  #content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  /* nutrition facts */
+  #nutrition-facts {
+    position: static;
+    align-self: center;
+    margin: 30px;
+    width: 300px;
+    height: 300px;
+  }
+  #nutrition-facts-title {
+    font-size: 16px;
+  }
+  .nutrition-subtext {
+    font-size: 10px;
+  }
+
+  /* filter */
+  #filter {
+    margin-top: 1.5vw;
+    cursor: pointer;
+
+    /* animation */
+    animation-name: fade-in;
+    animation-duration: 1s;
+  }
+  #filter-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 4.5vw;
+    background-color: var(--burnt-orange);
+  }
+  #filter-image {
+    width: 3vw;
+    height: 3vw;
+    margin-left: 4px;
+  }
+  #filter-text {
+    margin-left: 1vw;
+    font-size: 2vw;
+    color: var(--white);
+    font-family: var(--primary-font);
+  }
+
+  /* item */
+  #items {
+    height: 500px;
+  }
+  #items-table {
+    margin-top: 8px;
+    margin-left: 8px;
+  }
+  #item-row {
+    flex-direction: column;
+    margin-bottom: 8px;
+  }
+  #item-image {
+    width: 16px;
+    height: 16px;
+    margin-left: 0px;
+    margin-right: 4px;
+  }
+  #item-step-container {
+    margin-top: 4px;
+    margin-left: 0px;
+  }
+
+  /* total nutrition */
+  #total-nutrition-container {
+    flex-direction: column;
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+  #total-nutrition-tooltip {
+    font-size: 2.5vw;
+    margin-top: 8px;
+  }
 }
 
 /* custom fade in animations */

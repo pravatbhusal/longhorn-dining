@@ -219,7 +219,7 @@ function getCategoryItems(itemRow, category, search) {
 
 // format the category item's HTML
 function formatCategoryItem(foodIcons, item) {
-  let filterImages = "";
+  let filterImages = `<div id="item-image-container">`;
 
   // loop through each food icon (filter)
   let foodIconIndex = 0;
@@ -229,6 +229,7 @@ function formatCategoryItem(foodIcons, item) {
     filterImages += `<img id="item-image" src="${foodIcon}">`;
     foodIconIndex++;
   }
+  filterImages += `</div>`;
 
   // the quantity of this item if the user added a quantity
   let quantity = foodQuantities[item] ? foodQuantities[item] : 0;
