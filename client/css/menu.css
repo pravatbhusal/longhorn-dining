@@ -16,6 +16,7 @@ main {
 
 /* Primary orientation */
 @media (orientation: landscape) {
+
   /* content */
   #content {
     display: flex;
@@ -36,11 +37,11 @@ main {
   /* header */
   #header {
     display: flex;
-
     /* animation */
     animation-name: fade-in;
     animation-duration: 1s;
   }
+
   #header-container {
     display: flex;
     width: 100%;
@@ -49,6 +50,7 @@ main {
     align-items: center;
     background-color: var(--burnt-orange);
   }
+
   #header-text {
     margin-left: 25px;
     font-size: 3.5vw;
@@ -63,7 +65,7 @@ main {
 
   /* nutrition facts */
   #nutrition-facts {
-    position:absolute;
+    position: absolute;
     width: 450px;
     height: 300px;
     bottom: 0%;
@@ -73,6 +75,7 @@ main {
     border-width: thick;
     border-style: solid;
   }
+
   #nutrition-facts-container {
     font-family: var(--secondary-font);
     text-overflow: ellipsis;
@@ -80,27 +83,38 @@ main {
     white-space: nowrap;
     margin: 20px;
   }
+
   #nutrition-facts-title {
     font-weight: 1000;
     font-size: 24px;
   }
+
   .nutrition-subtext {
     font-size: 13px;
   }
+
   #line-thick {
     width: 100%;
     height: 5px;
     margin-bottom: 20px;
-    background-color:black;
+    background-color: black;
   }
+
   #line-thin {
     width: 100%;
     height: 2px;
     margin-bottom: 10px;
-    background-color:black;
+    background-color: black;
   }
 
   /* search */
+  #search-options {
+    display: flex;
+    flex-direction: column;
+    width: 100%
+    height: 10vw;
+  }
+
   #search-container {
     margin-top: 0.50vw;
     margin-bottom: 0.50vw;
@@ -109,6 +123,7 @@ main {
     animation-name: fade-in;
     animation-duration: 1s;
   }
+
   #search-input-text {
     font-family: var(--secondary-font);
     width: 100%;
@@ -121,18 +136,20 @@ main {
     flex-direction: column;
     flex-basis: 25%
   }
+
   #filter:hover {
     opacity: 0.8;
     filter: alpha(opacity=50);
   }
+
   #filter {
     margin-top: 0.50vw;
     cursor: pointer;
-
     /* animation */
     animation-name: fade-in;
     animation-duration: 1s;
   }
+
   #filter-container {
     display: flex;
     align-items: center;
@@ -140,11 +157,13 @@ main {
     height: 3vw;
     background-color: var(--burnt-orange);
   }
+
   #filter-image {
     width: 2vw;
     height: 2vw;
     margin-left: 15px;
   }
+
   #filter-text {
     margin-left: 1vw;
     font-size: 1.5vw;
@@ -161,48 +180,44 @@ main {
     height: 750px;
     overflow-y: scroll;
   }
+
   #items-table {
     margin-top: 10px;
     margin-left: 20px;
   }
+
   #item-row {
     display: flex;
     flex-direction: row;
   }
+
   #item-text {
     color: var(--light-blue);
     cursor: pointer;
   }
+
   #item-image {
     width: 24;
     height: 24;
     margin-left: 5px;
   }
+
   #item-step-container {
     margin-left: 10px;
   }
+
   #item-quantity-text {
     font-family: var(--secondary-font);
     color: var(--burnt-orange);
   }
 
   /* total nutrition */
-  #total-nutrition-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 10px;
-    margin-left: 20px;
-
-    /* animation */
-    animation-name: fade-in;
-    animation-duration: 1s;
-  }
   #total-nutrition-tooltip {
     font-family: var(--secondary-font);
     font-size: 1vw;
     color: var(--burnt-orange);
   }
+
   .total-nutrition-btn {
     margin-right: 5px;
   }
@@ -210,6 +225,7 @@ main {
 
 /* Mobile orientation */
 @media (orientation: portrait) {
+
   /* content */
   #content {
     display: flex;
@@ -236,6 +252,7 @@ main {
     animation-name: fade-in;
     animation-duration: 1s;
   }
+
   #header-container {
     display: flex;
     flex-direction: row;
@@ -243,6 +260,7 @@ main {
     text-align: center;
     align-items: center;
   }
+
   #header-text {
     margin: 1vw;
     text-align: center;
@@ -259,7 +277,7 @@ main {
 
   /* nutrition facts */
   #nutrition-facts {
-    position:absolute;
+    position: absolute;
     width: 450px;
     height: 300px;
     bottom: 0%;
@@ -269,6 +287,7 @@ main {
     border-width: thick;
     border-style: solid;
   }
+
   #nutrition-facts-container {
     font-family: var(--secondary-font);
     text-overflow: ellipsis;
@@ -276,24 +295,28 @@ main {
     white-space: nowrap;
     margin: 20px;
   }
+
   #nutrition-facts-title {
     font-weight: 1000;
     font-size: 24px;
   }
+
   .nutrition-subtext {
     font-size: 13px;
   }
+
   #line-thick {
     width: 100%;
     height: 5px;
     margin-bottom: 20px;
-    background-color:black;
+    background-color: black;
   }
+
   #line-thin {
     width: 100%;
     height: 2px;
     margin-bottom: 10px;
-    background-color:black;
+    background-color: black;
   }
 
   /* search */
@@ -307,6 +330,7 @@ main {
     animation-name: fade-in;
     animation-duration: 1s;
   }
+
   #search-input-text {
     font-family: var(--secondary-font);
     width: 90%;
@@ -315,24 +339,27 @@ main {
 
   /* filters */
   #filters {
-    margin-top: 5vw;
     display: flex;
     flex-direction: row;
     /* flex-basis: 25% */
     flex-wrap: wrap;
     justify-content: space-around;
-    background-color: var(--burnt-orange);
+    /* background-color: var(--burnt-orange); */
   }
+
   #filter:hover {
     opacity: 0.8;
     filter: alpha(opacity=50);
   }
+
   #filter {
+    margin-top: 5vw;
     cursor: pointer;
     /* animation */
     animation-name: fade-in;
     animation-duration: 1s;
   }
+
   #filter-container {
     display: flex;
     flex-direction: column-reverse;
@@ -341,11 +368,13 @@ main {
     width: 25vw;
     background-color: var(--burnt-orange);
   }
+
   #filter-image {
     width: 8vw;
     height: 8vw;
     margin: 1vw;
   }
+
   #filter-text {
     text-align: center;
     margin: 1vw;
@@ -363,26 +392,32 @@ main {
     height: 750px;
     overflow-y: scroll;
   }
+
   #items-table {
     margin-top: 10px;
     margin-left: 20px;
   }
+
   #item-row {
     display: flex;
     flex-direction: row;
   }
+
   #item-text {
     color: var(--light-blue);
     cursor: pointer;
   }
+
   #item-image {
     width: 24;
     height: 24;
     margin-left: 5px;
   }
+
   #item-step-container {
     margin-left: 10px;
   }
+
   #item-quantity-text {
     font-family: var(--secondary-font);
     color: var(--burnt-orange);
@@ -395,17 +430,19 @@ main {
     align-items: center;
     margin-top: 10px;
     margin-left: 20px;
-
     /* animation */
     animation-name: fade-in;
     animation-duration: 1s;
   }
+
   #total-nutrition-tooltip {
     font-family: var(--secondary-font);
-    font-size: 1vw;
+    font-size: 3vw;
     color: var(--burnt-orange);
   }
+
   .total-nutrition-btn {
+    height: 10vw;
     margin-right: 5px;
   }
 }
