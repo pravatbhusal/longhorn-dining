@@ -27,7 +27,7 @@ This web-app depends on the UT menu's webpage, so if the HTML code to the UT men
 ### Menu Page URL
 If the URL to the menu page changes, configure it in the ```config/scraper.json``` file.
 
-Note that if the HTML to the menu page changes, then you must change the web-scraping code in Python. Read the "scraper.py Methods" section to learn how the JSON data must be formatted so that the client can parse the JSON data from the server properly.
+Note that if the HTML to the menu page changes, then you must change the web-scraping code in Python. Read the "scraper.py Methods" section to learn how the JSON data must be formatted for the client to properly parse it.
 
 ### scraper.py Methods
 If the HTML to the menu page changes, then you must make sure to correctly format the JSON data to the client. Listed below are the methods in the ```server/scraper.py``` file that creates and formats the JSON data the client parses.
