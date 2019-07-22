@@ -131,22 +131,13 @@ function toggleFilter(filter) {
   }
 
   // update the menu items with the new filters
-  updateMenuItems();
-}
-
-// update the search menu's HTML
-function updateSearchMenu() {
-  var search = document.getElementById("search-input-text").value;
-  updateMenuItems(search);
+  filterMenuItems();
 }
 
 // update the menu items onto the menu's HTML
-function updateMenuItems(search) {
-  // get the menu items table, then clear all of its children
+function updateMenuItems() {
+  // get the menu items table
   const itemsTable = document.getElementById("items-table");
-  while(itemsTable.firstChild) {
-    itemsTable.removeChild(itemsTable.firstChild);
-  }
 
   // loop through each item from the JSON data
   Object.keys(menu).forEach((category) => {
@@ -157,7 +148,7 @@ function updateMenuItems(search) {
     `;
 
     // append the items of the category
-    itemRow += getCategoryItems(itemRow, category, search);
+    itemRow += getCategoryItems(itemRow, category);
 
     // append the spaces
     itemRow += `<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>`;
@@ -168,51 +159,14 @@ function updateMenuItems(search) {
 }
 
 // get the category's items formatted as HTML
-function getCategoryItems(itemRow, category, search) {
+function getCategoryItems(itemRow, category) {
   let categoryItems = "";
-
-  // determine if the whitelist (filter ins) is on
-  const whiteListCount = Object.keys(filterIns).length;
-  const whiteListOn = whiteListCount != 0;
 
   // loop through each category and append its items
   const items = menu[category];
   Object.keys(items).forEach((item) => {
-    // this food item's icons (filters)
-    const foodIcons = items[item];
-
-    // determine whether to filter out or in this food item
-    let filterOut = false;
-    let filterInCount = 0;
-
-    // if search is enabled and the item is not searched, then filter it out
-    let itemLowerCase = item.toString().toLowerCase();
-    let searchLowerCase = search ? search.toString().toLowerCase() : undefined;
-    if(search && itemLowerCase.indexOf(searchLowerCase) == -1) {
-      filterOut = true;
-    } else {
-      let foodIconIndex = 0;
-      while(foodIconIndex < foodIcons.length && !filterOut) {
-        // get the food icon
-        let foodIcon = foodIcons[foodIconIndex];
-
-        if(whiteListOn && filterIns[foodIcon]) {
-          // this item is whitelisted (filter in)
-          filterInCount++;
-        }
-        if(filterOuts[foodIcon]) {
-          // this item is blacklisted (filter out)
-          filterOut = true;
-        }
-        foodIconIndex++;
-      }
-    }
-
-    if((whiteListOn && filterInCount == whiteListCount && !filterOut)
-      || (!whiteListOn && !filterOut)) {
-      // append the item because it obeys the filters
-      categoryItems += formatCategoryItem(items[item], item);
-    }
+    // append this item's HTML to the category's row
+    categoryItems += formatCategoryItem(items[item], item);
   });
   return categoryItems;
 }
@@ -234,7 +188,7 @@ function formatCategoryItem(foodIcons, item) {
   // the quantity of this item if the user added a quantity
   let quantity = foodQuantities[item] ? foodQuantities[item] : 0;
   return `
-  <tr>
+  <tr data-item="${item}">
     <td id="item-row">
       <span id="item-text" onclick="updateNutritionItem('${item}')">
         ${item}
@@ -248,6 +202,72 @@ function formatCategoryItem(foodIcons, item) {
     </td>
   </tr>
   `;
+}
+
+// update the search menu's HTML
+function updateSearchMenu() {
+  var search = document.getElementById("search-input-text").value;
+  filterMenuItems(search);
+}
+
+// filter the menu item's HTML
+function filterMenuItems(search) {
+  // determine if the whitelist (filter ins) is on
+  const whiteListCount = Object.keys(filterIns).length;
+  const whiteListOn = whiteListCount != 0;
+
+  // loop through each item from the JSON data
+  Object.keys(menu).forEach((category) => {
+    // loop through each category and append its items
+    const items = menu[category];
+    Object.keys(items).forEach((item) => {
+      // determine whether to filter out or in this food item
+      let isDisplay = isDisplayItem(items, item,
+        search, whiteListOn, whiteListCount);
+
+      // display the item if it obeys the filters
+      const itemDiv = document.querySelector(`[data-item='${item}']`);
+      if(isDisplay) {
+        itemDiv.style.display = "table-row";
+      } else {
+        itemDiv.style.display = "none";
+      }
+    });
+  });
+}
+
+// return if to display an item based on a search and a white/blacklist
+function isDisplayItem(items, item, search, whiteListOn, whiteListCount) {
+  let filterOut = false;
+  let filterInCount = 0;
+
+  // if search is enabled and the item is not searched, then filter it out
+  let itemLowerCase = item.toString().toLowerCase();
+  let searchLowerCase = search ? search.toString().toLowerCase() : undefined;
+  if(search && itemLowerCase.indexOf(searchLowerCase) == -1) {
+    filterOut = true;
+  } else {
+    // this food item's icons (filters)
+    const foodIcons = items[item];
+    let foodIconIndex = 0;
+    while(foodIconIndex < foodIcons.length && !filterOut) {
+      // get the food icon
+      let foodIcon = foodIcons[foodIconIndex];
+
+      if(whiteListOn && filterIns[foodIcon]) {
+        // this item is whitelisted (filter in)
+        filterInCount++;
+      }
+      if(filterOuts[foodIcon]) {
+        // this item is blacklisted (filter out)
+        filterOut = true;
+      }
+      foodIconIndex++;
+    }
+  }
+  // return whether to display the item on the menu
+  return (whiteListOn && filterInCount == whiteListCount && !filterOut)
+    || (!whiteListOn && !filterOut);
 }
 
 // update the nutrition fact's HTML based on an item
