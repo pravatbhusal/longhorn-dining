@@ -152,10 +152,10 @@ main {
   font-family: var(--secondary-font);
   display: flex;
   flex-direction: column;
-  flex-basis: 75%;
+  flex-basis: 50%;
 }
 #items-table-container {
-  height: 750px;
+  height: 500px;
   overflow-y: scroll;
 }
 #items-table {
