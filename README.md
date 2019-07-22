@@ -29,7 +29,7 @@ This web-app depends on the UT menu's webpage, so if the HTML code to the UT men
 ### Menu Page URL
 If the URL to the menu page changes, configure it in the ```config/scraper.json``` file.
 
-If the URL's GET parameters change, you must change them in the ```config/scraper.json``` file because the server depends on the URL's GET parameters to format the links to the meals and locations.
+If the URL's routes or GET parameters change, you must change them in the ```config/scraper.json``` file because the server depends on them to format the links to the meals and locations.
 
 If the HTML to the menu page changes, then you must change the web-scraping code in Python. Read the "scraper.py Methods" section to learn how the JSON data must be formatted for the client to properly parse it.
 
