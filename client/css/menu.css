@@ -49,7 +49,7 @@ main {
 }
 #header-text {
   margin-left: 25px;
-  font-size: 3.5vw;
+  font-size: 3vw;
   color: var(--white);
   font-family: var(--primary-font);
 }
@@ -115,14 +115,13 @@ main {
 #filters {
   display: flex;
   flex-direction: column;
-  flex-basis: 25%
+  flex-basis: 15%
 }
 #filter:hover {
   opacity: 0.8;
   filter: alpha(opacity=50);
 }
 #filter {
-  margin-top: 0.50vw;
   cursor: pointer;
 
   /* animation */
@@ -139,11 +138,11 @@ main {
 #filter-image {
   width: 32px;
   height: 32px;
-  margin-left: 15px;
+  margin-left: .5vw;
 }
 #filter-text {
-  margin-left: 1vw;
-  font-size: 1.5vw;
+  margin-left: .5vw;
+  font-size: .75vw;
   color: var(--white);
   font-family: var(--primary-font);
 }
@@ -153,10 +152,10 @@ main {
   font-family: var(--secondary-font);
   display: flex;
   flex-direction: column;
-  flex-basis: 75%;
+  flex-basis: 50%;
 }
 #items-table-container {
-  height: 750px;
+  height: 500px;
   overflow-y: scroll;
 }
 #items-table {
