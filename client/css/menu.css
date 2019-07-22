@@ -315,9 +315,13 @@ main {
 
   /* filters */
   #filters {
+    margin-top: 5vw;
     display: flex;
-    flex-direction: column;
-    flex-basis: 25%
+    flex-direction: row;
+    /* flex-basis: 25% */
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: var(--burnt-orange);
   }
   #filter:hover {
     opacity: 0.8;
@@ -325,29 +329,27 @@ main {
   }
   #filter {
     cursor: pointer;
-
     /* animation */
     animation-name: fade-in;
     animation-duration: 1s;
   }
   #filter-container {
-    margin-left: 1vw;
-    margin-right: 1vw;
     display: flex;
+    flex-direction: column-reverse;
     align-items: center;
     text-align: center;
-    height: 3vw;
+    width: 25vw;
     background-color: var(--burnt-orange);
   }
   #filter-image {
-    width: 32;
-    height: 32;
-    margin-left: 15px;
+    width: 8vw;
+    height: 8vw;
+    margin: 1vw;
   }
   #filter-text {
     text-align: center;
     margin: 1vw;
-    font-size: 1.5vw;
+    font-size: 3vw;
     color: var(--white);
     font-family: var(--primary-font);
   }
