@@ -1,8 +1,7 @@
-# UT Dining App
-A UT dining web app that simplifies the filtering of food items.
+# Longhorn Dining
+A web-app for UT Austin students that simplifies the filtering of food items.
 
-This application web-scrapes the UT Nutrition webpage and displays the information on the website with filters.
-- The URL that the web app scrapes from is [here](http://hf-foodapp.austin.utexas.edu/)
+This application web-scrapes the UT Nutrition webpage and displays the information on the website with filters. The menu URL that the web-app scrapes from is [this](http://hf-foodapp.austin.utexas.edu/).
 
 ### Server
 To setup the server, go to ```config/server.json``` and configure the server properties.
@@ -16,18 +15,23 @@ python3 server.py
 ### Client
 The client uses bare-bones HTML, CSS, and JavaScript.
 
-To setup the client's connection to the server, go to ```client/js/server.js``` and
-configure the server properties.
+To setup the client's connection to the server, go to ```client/js/server.js``` and configure the server properties.
 
 To initiate the client, copy and paste the files inside the ```client``` folder into your web-server's public HTML folder.
 
-# UT Menu Parsing Guide
-Because this web-app relies on the UT Dining page's HTML, if the HTML code to the UT menu changes or the UT menu's website shuts down, then this guide will show you how to format the data from the server for the client to properly parse it.
+# Menu Parsing Guide
+Only read this parsing guide if the menu URL has shut down or its HTML changes.
 
-### URL Changes to UT Menu
-If the URL to the UT Menu page changes, change it in the ```config/scraper.json```.
+This web-app depends on the UT menu's webpage, so if the HTML code to the UT menu changes or the UT menu's website shuts down, then this guide will show you how to format the data from the server for the client to properly parse it.
+
+### Menu Page URL
+If the URL to the menu page changes, configure it in the ```config/scraper.json``` file.
+
+Note that if the HTML to the menu page changes, then you must change the web-scraping code in Python. Read the "```scraper.py``` Methods" to learn how the JSON data must be formatted so that the client can parse the JSON data from the server properly.
 
 ### scraper.py Methods
+If the HTML to the menu page changes, then you must make sure to correctly format the JSON data to the client. Listed below are the methods in the ```server/scraper.py``` file that creates and formats the JSON data the client parses.
+
 ##### 1. parse_meals(url)  
 Returns the meals with the link to the meal's locations in JSON format.
 
