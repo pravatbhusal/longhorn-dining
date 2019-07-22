@@ -103,7 +103,8 @@ main {
   /* search */
   #search-container {
     margin-top: 0.50vw;
-
+    margin-bottom: 0.50vw;
+    width: 25%;
     /* animation */
     animation-name: fade-in;
     animation-duration: 1s;
@@ -213,7 +214,7 @@ main {
   #content {
     display: flex;
     flex-direction: column;
-    width: 85%;
+    width: 90%;
     height: auto;
   }
 
@@ -244,7 +245,7 @@ main {
   }
   #header-text {
     text-align: center;
-    font-size: 8vw;
+    font-size: 9vw;
     color: var(--burnt-orange);
     font-family: var(--primary-font);
   }
@@ -252,6 +253,7 @@ main {
   /* menu */
   #menu {
     display: flex;
+    flex-direction: column;
   }
 
   /* nutrition facts */
@@ -296,6 +298,7 @@ main {
   /* search */
   #search-container {
     margin-top: 0.50vw;
+    margin-bottom: 0.50vw;
 
     /* animation */
     animation-name: fade-in;
@@ -310,7 +313,7 @@ main {
   /* filters */
   #filters {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-basis: 25%
   }
   #filter:hover {
@@ -318,7 +321,6 @@ main {
     filter: alpha(opacity=50);
   }
   #filter {
-    margin-top: 0.50vw;
     cursor: pointer;
 
     /* animation */
@@ -326,6 +328,8 @@ main {
     animation-duration: 1s;
   }
   #filter-container {
+    margin-left: 1vw;
+    margin-right: 1vw;
     display: flex;
     align-items: center;
     text-align: center;
@@ -338,7 +342,8 @@ main {
     margin-left: 15px;
   }
   #filter-text {
-    margin-left: 1vw;
+    text-align: center;
+    margin: 1vw;
     font-size: 1.5vw;
     color: var(--white);
     font-family: var(--primary-font);
