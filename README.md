@@ -1,4 +1,6 @@
 # Longhorn Dining
+<img src="./client/assets/logo.svg" width="128px" height="128px">
+
 A web-app for UT Austin students that simplifies the filtering of food items.
 
 This application web-scrapes the UT Nutrition webpage and displays the information on the website with filters. The menu URL that the web-app scrapes from is [this](http://hf-foodapp.austin.utexas.edu/).
