@@ -1,12 +1,14 @@
 // send an HTTP request to receive the meals
 fetch(serverURL + "/meal").then((data) => {
   data.json().then((json) => {
-    // loop through each meal from the JSON data
-    Object.keys(json).forEach((meal) => {
-      addButton(meal, json[meal]);
-    });
-  }).catch((error) => {
-    alert("Failed to receive information from UT. Check back later!");
+    if(Object.keys(json).length != 0) {
+      // loop through each meal from the JSON data
+      Object.keys(json).forEach((meal) => {
+        addButton(meal, json[meal]);
+      });
+    } else {
+      alert("Failed to receive information from UT. Check back later!");
+    }
   });
 }).catch((error) => {
   alert("Failed to receive the information from the server.");

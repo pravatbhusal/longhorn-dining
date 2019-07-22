@@ -44,11 +44,13 @@ fetch(serverURL + "/meal/location/menu", {
     menu = json["Menu"];
     nutrition = json["Nutrition"];
 
-    // view the food information
-    addFilterButtons(filters, menu);
-    updateMenuItems();
-  }).catch((error) => {
-    alert("Failed to receive information from UT. Check back later!");
+    if(Object.keys(menu).length != 0) {
+      // view the food information
+      addFilterButtons(filters, menu);
+      updateMenuItems();
+    } else {
+      alert("Failed to receive information from UT. Check back later!");
+    }
   });
 }).catch((error) => {
   alert("Failed to receive the information from the server.");
