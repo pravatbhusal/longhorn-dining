@@ -125,6 +125,14 @@ main {
   flex-direction: column;
   flex-basis: 15%;
   margin-right: 10px;
+  margin-top: 1vw;
+  text-align: center;
+}
+
+#filter-subheader {
+  font-family: var(--primary-font);
+  font-size: 1.25vw;
+  color: var(--burnt-orange);
 }
 #filter:hover {
   opacity: 0.8;
@@ -219,10 +227,16 @@ main {
 /* @media (orientation: portrait),
 (orientation: landscape) and (min-width: 321px) and (max-width: 1024px) */
 @media (orientation: portrait) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   /* header */
   #header-container {
     background-color: transparent;
     margin: 3vw;
+    text-align: center;
   }
   #header-text {
     font-size: 4vw;
@@ -244,23 +258,41 @@ main {
 
   #nutrition-facts-mobile {
     display: flex;
-    position: absolute;
-    bottom: 0px;
     margin: 20px;
-    margin-top: 100px;
+    margin-top: 10px;
     width: 95%;
     height: 200px;
     background-color: var(--white);
     border-color: black;
     border-width: thick;
     border-style: solid;
+    font-size: 12px;
+  }
+
+  #line-thin {
+    height: 1px;
+    margin-bottom: 1px;
+  }
+
+  #line-thick {
+    height: 3px;
+    margin-bottom: 5px;
   }
 
   #nutrition-facts-title {
     font-size: 16px;
   }
   .nutrition-subtext {
-    font-size: 10px;
+    font-size: 8px;
+  }
+
+  #filters {
+    flex-basis: 20%;
+  }
+
+  #filter-subheader {
+    font-size: 3vw;
+    margin: 3vw;
   }
 
   /* filter */
@@ -273,18 +305,18 @@ main {
     animation-duration: 1s;
   }
   #filter-container {
-    height: 4.5vw;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 10vw;
+    background-color: transparent;
   }
   #filter-image {
-    width: 3vw;
-    height: 3vw;
-    margin-left: 4px;
+    width: 5vw;
+    height: 5vw;
   }
   #filter-text {
-    margin-left: 1vw;
-    margin-right: 1vw;
-    font-size: 1.5vw;
-    color: var(--white);
+    font-size: 3vw;
+    color: var(--burnt-orange);
     font-family: var(--primary-font);
   }
 
@@ -293,9 +325,9 @@ main {
     font-family: var(--secondary-font);
     display: flex;
     flex-direction: column;
-    flex-basis: 90%;
+    flex-basis: 80%;
     margin-top: 15px;
-    height: 50vh;
+    height: 500px;
   }
 
   #items-table {
