@@ -115,14 +115,13 @@ main {
 #filters {
   display: flex;
   flex-direction: column;
-  flex-basis: 25%
+  flex-basis: 15%
 }
 #filter:hover {
   opacity: 0.8;
   filter: alpha(opacity=50);
 }
 #filter {
-  margin-top: 0.50vw;
   cursor: pointer;
 
   /* animation */
@@ -139,11 +138,11 @@ main {
 #filter-image {
   width: 32px;
   height: 32px;
-  margin-left: 15px;
+  margin-left: .5vw;
 }
 #filter-text {
-  margin-left: 1vw;
-  font-size: 1.5vw;
+  margin-left: .5vw;
+  font-size: .75vw;
   color: var(--white);
   font-family: var(--primary-font);
 }
