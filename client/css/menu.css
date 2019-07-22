@@ -204,8 +204,9 @@ main {
   margin-right: 5px;
 }
 
-/* Mobile orientation */
-@media (orientation: portrait) {
+/* Mobile, Mobile Landscape, or Tablet orientation */
+@media (orientation: portrait),
+(orientation: landscape) and (min-width: 768px) and (max-width: 1024px) {
   /* header */
   #header-container {
     background-color: transparent;
@@ -288,6 +289,7 @@ main {
   #total-nutrition-tooltip {
     font-size: 2.5vw;
     margin-top: 8px;
+    margin-bottom: 8px;
   }
 }
 

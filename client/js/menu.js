@@ -184,7 +184,6 @@ function getCategoryItems(itemRow, category, search) {
     // determine whether to filter out or in this food item
     let filterOut = false;
     let filterInCount = 0;
-    let foodIconIndex = 0;
 
     // if search is enabled and the item is not searched, then filter it out
     let itemLowerCase = item.toString().toLowerCase();
@@ -192,7 +191,8 @@ function getCategoryItems(itemRow, category, search) {
     if(search && itemLowerCase.indexOf(searchLowerCase) == -1) {
       filterOut = true;
     } else {
-      while(foodIconIndex < foodIcons.length) {
+      let foodIconIndex = 0;
+      while(foodIconIndex < foodIcons.length && !filterOut) {
         // get the food icon
         let foodIcon = foodIcons[foodIconIndex];
 
