@@ -74,7 +74,6 @@ footer {
   #button {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-top: 3vw;
     cursor: pointer;
@@ -94,7 +93,6 @@ footer {
     align-items: center;
     width: 70%;
     height: 8vw;
-    text-align: center;
     background-color: var(--burnt-orange);
   }
   #button-text {
@@ -143,7 +141,6 @@ footer {
   #button {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     margin-top: 3vw;
     cursor: pointer;
@@ -161,18 +158,17 @@ footer {
   #button-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 70%;
     height: 15vw;
     background-color: var(--burnt-orange);
-    align-content: center;
     text-align: center;
   }
   #button-text {
     /* margin-left: 25px; */
     margin: 0px;
-    font-size: 5vw;
-    margin-top: 3vw;
+    font-size: 4.25vw;
     color: var(--white);
     font-family: var(--primary-font);
   }
