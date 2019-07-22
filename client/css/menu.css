@@ -141,8 +141,8 @@ main {
     background-color: var(--burnt-orange);
   }
   #filter-image {
-    width: 32;
-    height: 32;
+    width: 2vw;
+    height: 2vw;
     margin-left: 15px;
   }
   #filter-text {
@@ -244,6 +244,7 @@ main {
     align-items: center;
   }
   #header-text {
+    margin: 1vw;
     text-align: center;
     font-size: 9vw;
     color: var(--burnt-orange);
@@ -297,23 +298,25 @@ main {
 
   /* search */
   #search-container {
+    display: flex;
+    flex-direction: column;
     margin-top: 0.50vw;
     margin-bottom: 0.50vw;
-
+    align-items: center;
     /* animation */
     animation-name: fade-in;
     animation-duration: 1s;
   }
   #search-input-text {
     font-family: var(--secondary-font);
-    width: 100%;
+    width: 90%;
     padding: 5px;
   }
 
   /* filters */
   #filters {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-basis: 25%
   }
   #filter:hover {
