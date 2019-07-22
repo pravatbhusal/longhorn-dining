@@ -275,9 +275,6 @@ main {
     flex-direction: column;
   }
 
-  #nutrition {
-    display: flex;
-  }
   /* nutrition facts */
   #nutrition-facts {
     display: flex;
@@ -285,6 +282,7 @@ main {
     border-color: black;
     border-width: thick;
     border-style: solid;
+    margin: 40px
   }
 
   #nutrition-facts-container {
