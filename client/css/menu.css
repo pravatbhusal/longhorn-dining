@@ -65,7 +65,7 @@ main {
 
   /* nutrition facts */
   #nutrition-facts {
-    position: absolute;
+    position: fixed;
     width: 450px;
     height: 300px;
     bottom: 0%;
@@ -282,7 +282,7 @@ main {
     border-color: black;
     border-width: thick;
     border-style: solid;
-    margin: 40px
+    margin: 40px;
   }
 
   #nutrition-facts-container {
