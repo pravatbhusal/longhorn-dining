@@ -139,12 +139,13 @@ main {
   display: flex;
   align-items: center;
   text-align: center;
-  height: 3vw;
+  margin-top: 1vw;
+  height: 2vw;
   background-color: var(--burnt-orange);
 }
 #filter-image {
-  width: 32px;
-  height: 32px;
+  width: 1vw;
+  height: 1vw;
   margin-left: .5vw;
 }
 #filter-text {
@@ -212,11 +213,14 @@ main {
 }
 
 /* Mobile, Mobile Landscape, or Tablet orientation */
-@media (orientation: portrait),
-(orientation: landscape) and (min-width: 321px) and (max-width: 1024px) {
+
+/* @media (orientation: portrait),
+(orientation: landscape) and (min-width: 321px) and (max-width: 1024px) */
+@media (orientation: portrait) {
   /* header */
   #header-container {
     background-color: transparent;
+    margin: 3vw;
   }
   #header-text {
     font-size: 4vw;
