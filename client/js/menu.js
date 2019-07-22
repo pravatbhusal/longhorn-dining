@@ -280,7 +280,7 @@ function updateNutritionItem(item) {
 }
 
 // update the nutrition fact's HTML based on the total nutrition list
-function updateNutritionFoodList() {
+function updateNutritionList() {
   // set the food's name and serving size
   document.getElementById("nutrition-facts-title").innerHTML = "Nutrition Facts";
   let servingSizeText = document.getElementById("serving-size-text");
@@ -370,7 +370,7 @@ function resetTotalNutrition() {
   totalNutrition = {"Calories": 0, "Calories from Fat": 0, "Total Fat": 0,
     "Saturated Fat": 0, "Trans Fat": 0, "Cholestrol": 0, "Sodium": 0,
     "Total Carbohydrate": 0, "Dietary Fiber": 0, "Sugars": 0, "Protein": 0};
-  updateNutritionFoodList();
+  updateNutritionList();
 
   // reset all the quantity texts
   let quantityTexts = document.querySelectorAll("[id=item-quantity-text]");

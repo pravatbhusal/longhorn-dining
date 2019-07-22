@@ -185,12 +185,23 @@ main {
 
 /* total nutrition */
 #total-nutrition-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin-top: 10px;
   margin-left: 20px;
 
   /* animation */
   animation-name: fade-in;
   animation-duration: 1s;
+}
+#total-nutrition-tooltip {
+  font-family: var(--secondary-font);
+  font-size: 1vw;
+  color: var(--burnt-orange);
+}
+.total-nutrition-btn {
+  margin-right: 5px;
 }
 
 /* custom fade in animations */

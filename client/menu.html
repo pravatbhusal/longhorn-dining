@@ -63,12 +63,17 @@
         </div>
         <div id="items">
           <div id="total-nutrition-container">
-            <button id="standard-btn" onclick="updateNutritionFoodList()">
+            <button class="total-nutrition-btn" id="standard-btn"
+              onclick="updateNutritionList()">
               Total Facts
             </button>
-            <button id="standard-btn" onclick="resetTotalNutrition()">
+            <button class="total-nutrition-btn" id="standard-btn"
+              onclick="resetTotalNutrition()">
               Clear
             </button>
+            <span id="total-nutrition-tooltip">
+              Click "Total Facts" to view Nutrition Facts.
+            </span>
           </div>
           <table id="items-table">
           </table>
