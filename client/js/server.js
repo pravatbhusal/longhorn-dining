@@ -1,5 +1,5 @@
 // the host of the server
-const host = "http://40.113.230.242";
+const host = "http://longhorndining.tk";
 
 // the port of the server
 const port = 5000;

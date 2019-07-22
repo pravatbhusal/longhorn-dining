@@ -7,25 +7,29 @@
   --secondary-font: 'Tenor Sans', sans-serif;
 }
 
+/* Footer Styles */
 #footer {
   display: flex;
   flex-direction: column;
   width: 100%
 }
-
-#credits {
+#credits-text {
   position: absolute;
   align-self: center;
   bottom: 20px;
   font-family: var(--secondary-font);
-  color: var(--burnt-orange)
+  color: var(--burnt-orange);
+  /* animation */
+  animation-name: fade-in;
+  animation-duration: 1s;
+  align-items: center;
 }
 
 /* Primary orientation */
 @media (orientation: landscape) {
-
-  #credits {
-    font-size: 1vw;
+  /* Credits Styles */
+  #credits-text {
+    font-size: 1.5vw;
   }
 
   /* Header Styles */
@@ -92,8 +96,8 @@
 
 /* Mobile orientation */
 @media (orientation: portrait) {
-
-  #credits {
+  /* Credits Styles */
+  #credits-text {
     font-size: 2.25vw;
     bottom: 10%;
   }
