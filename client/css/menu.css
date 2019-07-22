@@ -206,6 +206,15 @@ main {
 
 /* Mobile orientation */
 @media (orientation: portrait) {
+  /* header */
+  #header-container {
+    background-color: transparent;
+  }
+  #header-text {
+    font-size: 4vw;
+    color: var(--burnt-orange);
+  }
+
   /* content */
   #content {
     display: flex;
@@ -218,7 +227,7 @@ main {
   #nutrition-facts {
     position: static;
     align-self: center;
-    margin: 30px;
+    margin: 20px;
     width: 300px;
     height: 300px;
   }
