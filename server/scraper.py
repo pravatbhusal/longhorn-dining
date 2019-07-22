@@ -184,7 +184,7 @@ def parse_nutrition(html):
 
     return nutrition
 
-# format the nutrition Array into a dictionary of food names
+# format the nutrition list into a dictionary of food names
 def format_nutrition(menu, nutrition):
     nutrition_dict = dict()
 
