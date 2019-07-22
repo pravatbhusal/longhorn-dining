@@ -27,7 +27,7 @@ Because this web-app relies on the UT Dining page's HTML, if the HTML code to th
 ### URL Changes to UT Menu
 If the URL to the UT Menu page changes, change it in the ```config/scraper.json```.
 
-### ```server/scraper.py```
+### scraper.py Methods
 ##### 1. parse_meals(url)  
 Returns the meals with the link to the meal's locations in JSON format.
 
