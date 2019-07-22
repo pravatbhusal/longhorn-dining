@@ -175,9 +175,9 @@ def parse_nutrition(html):
             for text in fact.find_all(text=True):
                 fact_str += text
 
-            # add the nutrition facts into an Array
-            fact_str = fact_str.strip()
-            item_facts.append(fact_str)
+            # parse the fact, then merge it into the list of facts
+            fact_list = fact_str.strip().split("\n")
+            item_facts += fact_list
 
         # append the item's facts into the nutrition
         nutrition.append(item_facts)

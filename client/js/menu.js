@@ -256,27 +256,27 @@ function updateNutritionItem(item) {
   servingSizeText.innerHTML = facts[0];
 
   // update the cholestrol, sodium, and protein facts
-  document.getElementById("cholestrol-text").innerHTML = facts[6];
-  document.getElementById("sodium-text").innerHTML = facts[7];
-  document.getElementById("protein-text").innerHTML = facts[11];
+  document.getElementById("cholestrol-text").innerHTML = facts[7];
+  document.getElementById("sodium-text").innerHTML = facts[8];
+  document.getElementById("protein-text").innerHTML = facts[12];
 
   // update the calorie facts
   let caloriesText = document.getElementById("calories-text");
   let caloriesSubText = document.getElementById("calories-subtext");
-  caloriesText.innerHTML = facts[2].split("\n")[0];
-  caloriesSubText.innerHTML = facts[2].split("\n")[1];
+  caloriesText.innerHTML = facts[2];
+  caloriesSubText.innerHTML = facts[3];
 
   // update the fats facts
   let fatsText = document.getElementById("fats-text");
   let fatsSubtext = document.getElementById("fats-subtext");
-  fatsText.innerHTML = facts[3];
-  fatsSubtext.innerHTML = facts[4] + ", " + facts[5];
+  fatsText.innerHTML = facts[4];
+  fatsSubtext.innerHTML = facts[5] + ", " + facts[5];
 
   // update the carbohydrate facts
   let carbsText = document.getElementById("carbs-text");
   let carbsSubtext = document.getElementById("carbs-subtext");
-  carbsText.innerHTML = facts[8];
-  carbsSubtext.innerHTML = facts[9] + ", " + facts[10];
+  carbsText.innerHTML = facts[6];
+  carbsSubtext.innerHTML = facts[10] + ", " + facts[11];
 }
 
 // update the nutrition fact's HTML based on the total nutrition list
@@ -340,27 +340,27 @@ function updateTotalNutrition(item, quantity) {
 
   // return the quantified nutritional value from a nutrition string
   function getValue(fact) {
-    return quantity * parseInt(fact.match(/\d+/)[0]);
+    return quantity * parseInt(fact.match(/[\d\.]+/));
   }
 
   // update the calories
-  totalNutrition["Calories"] += getValue(facts[2].split("\n")[0]);
-  totalNutrition["Calories from Fat"] += getValue(facts[2].split("\n")[1]);
+  totalNutrition["Calories"] += getValue(facts[2]);
+  totalNutrition["Calories from Fat"] += getValue(facts[3]);
 
   // update the fats
-  totalNutrition["Total Fat"] += getValue(facts[3])
-  totalNutrition["Saturated Fat"] += getValue(facts[4]);
-  totalNutrition["Trans Fat"] += getValue(facts[5]);
+  totalNutrition["Total Fat"] += getValue(facts[4])
+  totalNutrition["Saturated Fat"] += getValue(facts[5]);
+  totalNutrition["Trans Fat"] += getValue(facts[6]);
 
   // update the cholestrol, sodium, and protein
-  totalNutrition["Cholestrol"] += getValue(facts[6]);
-  totalNutrition["Sodium"] += getValue(facts[7]);;
-  totalNutrition["Protein"] += getValue(facts[11]);
+  totalNutrition["Cholestrol"] += getValue(facts[7]);
+  totalNutrition["Sodium"] += getValue(facts[8]);
+  totalNutrition["Protein"] += getValue(facts[12]);
 
   // update the carbohydrates
-  totalNutrition["Total Carbohydrate"] += getValue(facts[8]);
-  totalNutrition["Dietary Fiber"] += getValue(facts[9]);
-  totalNutrition["Sugars"] += getValue(facts[10]);
+  totalNutrition["Total Carbohydrate"] += getValue(facts[9]);
+  totalNutrition["Dietary Fiber"] += getValue(facts[10]);
+  totalNutrition["Sugars"] += getValue(facts[11]);
 }
 
 // reset the total nutrition values
