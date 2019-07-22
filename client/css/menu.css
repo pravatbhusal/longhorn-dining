@@ -275,13 +275,12 @@ main {
     flex-direction: column;
   }
 
+  #nutrition {
+    display: flex;
+  }
   /* nutrition facts */
   #nutrition-facts {
-    position: absolute;
-    width: 450px;
-    height: 300px;
-    bottom: 0%;
-    right: 10%;
+    display: flex;
     background-color: var(--white);
     border-color: black;
     border-width: thick;
@@ -366,7 +365,6 @@ main {
     align-items: center;
     text-align: center;
     width: 25vw;
-    background-color: var(--burnt-orange);
   }
 
   #filter-image {
@@ -379,7 +377,7 @@ main {
     text-align: center;
     margin: 1vw;
     font-size: 3vw;
-    color: var(--white);
+    color: var(--burnt-orange);
     font-family: var(--primary-font);
   }
 
@@ -428,8 +426,6 @@ main {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 10px;
-    margin-left: 20px;
     /* animation */
     animation-name: fade-in;
     animation-duration: 1s;
