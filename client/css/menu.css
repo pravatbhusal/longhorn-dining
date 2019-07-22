@@ -154,6 +154,8 @@ main {
   display: flex;
   flex-direction: column;
   flex-basis: 75%;
+}
+#items-table-container {
   height: 750px;
   overflow-y: scroll;
 }
@@ -187,8 +189,7 @@ main {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 10px;
-  margin-left: 20px;
+  padding: 10px;
 
   /* animation */
   animation-name: fade-in;
@@ -283,9 +284,6 @@ main {
   /* total nutrition */
   #total-nutrition-container {
     flex-direction: column;
-    margin-top: 5px;
-    margin-left: 5px;
-    padding-bottom: 15px;
   }
   #total-nutrition-tooltip {
     font-size: 2.5vw;
