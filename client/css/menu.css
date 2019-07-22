@@ -112,6 +112,7 @@ main {
   animation-name: fade-in;
   animation-duration: 1s;
 }
+
 #search-input-text {
   font-family: var(--secondary-font);
   width: 100%;
@@ -122,7 +123,8 @@ main {
 #filters {
   display: flex;
   flex-direction: column;
-  flex-basis: 15%
+  flex-basis: 15%;
+  margin-right: 10px;
 }
 #filter:hover {
   opacity: 0.8;
@@ -280,15 +282,22 @@ main {
   }
   #filter-text {
     margin-left: 1vw;
-    font-size: 2vw;
+    margin-right: 1vw;
+    font-size: 1.5vw;
     color: var(--white);
     font-family: var(--primary-font);
   }
 
   /* items */
   #items {
-    height: 500px;
+    font-family: var(--secondary-font);
+    display: flex;
+    flex-direction: column;
+    flex-basis: 90%;
+    margin-top: 15px;
+    height: 50vh;
   }
+
   #items-table {
     margin-left: 8px;
   }
