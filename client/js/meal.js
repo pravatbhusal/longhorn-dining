@@ -23,6 +23,7 @@ fetch(serverURL + "/meal/location", {
       });
     } else {
       alert("Failed to receive information from UT. Check back later!");
+      window.location.href = "index.html";
     }
   });
 }).catch((error) => {

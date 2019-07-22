@@ -50,6 +50,7 @@ fetch(serverURL + "/meal/location/menu", {
       updateMenuItems();
     } else {
       alert("Failed to receive information from UT. Check back later!");
+      window.location.href = "index.html";
     }
   });
 }).catch((error) => {
