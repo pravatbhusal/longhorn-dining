@@ -222,11 +222,9 @@ main {
   margin-right: 5px;
 }
 
-/* Mobile, Mobile Landscape, or Tablet orientation */
-
-/* @media (orientation: portrait),
-(orientation: landscape) and (min-width: 321px) and (max-width: 1024px) */
-@media (orientation: portrait) {
+/* Mobile or Mobile Landscape */
+@media (orientation: portrait),
+(orientation: landscape) and (min-width: 321px) and (max-width: 767px) {
   main {
     display: flex;
     flex-direction: column;
