@@ -139,6 +139,7 @@ def parse_menu(url):
 
                     # modify the food name to prevent parsing errors
                     food_name = food_name.replace("&amp;", "&")
+                    food_name = food_name.replace("'", "`")
                     food_name = food_name.replace('"', "``")
 
                     menu[category][food_name] = list()
