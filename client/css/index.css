@@ -36,11 +36,24 @@ footer {
   align-items: center;
 }
 
+#help-text {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--primary-font);
+  color: var(--burnt-orange);
+  text-align: center;
+}
+
+#credits-text {
+  position: absolute;
+}
+
 /* Primary orientation */
 @media (orientation: landscape) {
   /* Credits Styles */
   #credits-text {
-    font-size: 1.5vw;
+    font-size: 1vw;
+    bottom: 1%;
   }
 
   /* Header Styles */
@@ -68,6 +81,10 @@ footer {
   }
   #header-logo {
     width: 10vw;
+  }
+
+  #help-text {
+    font-size: 1vw;
   }
 
   /* Button Styles */
@@ -101,6 +118,7 @@ footer {
     color: var(--white);
     font-family: var(--primary-font);
   }
+
 }
 
 /* Mobile orientation */
@@ -108,7 +126,7 @@ footer {
   /* Credits Styles */
   #credits-text {
     font-size: 2.25vw;
-    bottom: 10%;
+    bottom: 35%;
   }
 
   /* Header Styles */
@@ -135,6 +153,10 @@ footer {
   }
   #header-logo {
     width: 20vw;
+  }
+
+  #help-text {
+    font-size: 3vw;
   }
 
   /* Button Styles */
