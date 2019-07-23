@@ -246,7 +246,7 @@ main {
     align-content: center;
     flex-wrap: wrap;
     padding: 0px;
-    margin: 0px;
+    margin: 5vw;;
     padding-bottom: 4vw;
   }
   #filter-subheader-desktop {
@@ -283,7 +283,7 @@ main {
   }
   #filter-image {
     width: 8vw;
-    height: 8vw;
+    height: auto;
   }
   #filter-text {
     width: 30vw;
