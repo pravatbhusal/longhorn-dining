@@ -225,12 +225,16 @@ function filterMenuItems(search) {
       let isDisplay = isDisplayItem(items, item,
         search, whiteListOn, whiteListCount);
 
-      // display the item if it obeys the filters
-      const itemDiv = document.querySelector(`[data-item='${item}']`);
-      if(isDisplay) {
-        itemDiv.style.display = "table-row";
-      } else {
-        itemDiv.style.display = "none";
+      // display the item (or items if repeated) if it obeys the filters
+      const itemDivs = document.querySelectorAll(`[data-item='${item}']`);
+      for(let itemDivIndex = 0; itemDivIndex < itemDivs.length; itemDivIndex++) {
+        let itemDiv = itemDivs[itemDivIndex];
+
+        if(isDisplay) {
+          itemDiv.style.display = "table-row";
+        } else {
+          itemDiv.style.display = "none";
+        }
       }
     });
   });
