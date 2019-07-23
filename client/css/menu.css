@@ -76,15 +76,12 @@ main {
   font-family: var(--primary-font);
   color: var(--burnt-orange);
 }
-
-#help-text {
+#filter-help-text {
   font-size: .75vw;
 }
-
 #filter-subheader-mobile {
   display: none;
 }
-
 #filter:hover {
   opacity: 0.8;
   filter: alpha(opacity=50);
@@ -231,34 +228,18 @@ main {
     color: var(--burnt-orange);
   }
 
-  #filter-subheader-desktop {
-    display: none;
-  }
-
-  #help-text {
-    font-size: 2vw;
-    margin-top: 12vw;
-  }
-
-  #filter-subheader-mobile {
-    font-family: var(--primary-font);
-    display: contents;
-    text-align: center;
-    color: var(--burnt-orange);
-  }
-
   /* menu */
   #menu {
     flex-direction: column;
     align-content: center;
   }
-
   #menu-content {
     display: flex;
     flex-direction: column;
     flex-basis: 65%;
   }
 
+  /* filters */
   #filters {
     flex-direction: row;
     justify-content: space-around;
@@ -268,12 +249,19 @@ main {
     margin: 0px;
     padding-bottom: 4vw;
   }
-
-  /* filter */
   #filter-subheader-desktop {
     display: none;
   }
-
+  #filter-help-text {
+    font-size: 2vw;
+    margin-top: 12vw;
+  }
+  #filter-subheader-mobile {
+    font-family: var(--primary-font);
+    display: contents;
+    text-align: center;
+    color: var(--burnt-orange);
+  }
   #filter {
     width: 10vw;
     height: 4vw;
@@ -284,17 +272,14 @@ main {
     animation-name: fade-in;
     animation-duration: 1s;
   }
-
   #filter-container:hover {
     opacity: .2;
   }
-
   #filter-container {
     display: flex;
     flex-direction: column;
     height: 4vw;
     background-color: transparent;
-
   }
   #filter-image {
     width: 8vw;
