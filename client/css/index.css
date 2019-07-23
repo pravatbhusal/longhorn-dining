@@ -27,6 +27,7 @@ footer {
   width: 100%;
 }
 #credits-text {
+  padding: 10vw;
   align-self: center;
   font-family: var(--secondary-font);
   color: var(--burnt-orange);
@@ -42,10 +43,8 @@ footer {
   font-family: var(--primary-font);
   color: var(--burnt-orange);
   text-align: center;
-}
-
-#credits-text {
-  position: absolute;
+  animation-name: fade-in;
+  animation-duration: 1s;
 }
 
 /* Primary orientation */
@@ -126,7 +125,7 @@ footer {
   /* Credits Styles */
   #credits-text {
     font-size: 2.25vw;
-    bottom: 35%;
+    bottom: 10px;;
   }
 
   /* Header Styles */

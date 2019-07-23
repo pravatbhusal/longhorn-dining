@@ -1,5 +1,6 @@
 <!-- Authors: Pravat Bhusal & Fronrich Puno -->
 <html>
+
 <body>
   <header>
     <!-- trademark -->
@@ -7,7 +8,7 @@
     <title>Longhorn Dining - Menu</title>
 
     <!-- favicon -->
-    <link rel='shortut icon' href='favicon.ico' type='image/x-icon'/ >
+    <link rel='shortut icon' href='favicon.ico' type='image/x-icon'/>
 
     <!--optimized for mobile-->
     <meta charset="utf-8">
@@ -31,13 +32,16 @@
           <!-- <h1 id="header-text">DEBUG MENU</h1> -->
         </div>
       </div>
-
+      <!-- mobile subheader -->
+      <div id="filter-subheader-mobile">
+        <span id="help-text">Select from the following filters to personalize the menu</span>
+      </div>
       <!-- menu -->
       <div id="menu">
         <div id="menu-content">
           <div id="filters">
-            <div id="filter-subheader">
-              <span>RESTRICTIONS</span>
+            <div id="filter-subheader-desktop">
+              <span id="help-text">Select from the following filters to personalize the menu</span>
             </div>
             <!-- OFFLINE DEBUG -->
             <!-- ################################
@@ -66,8 +70,7 @@
           </div>
           <div id="items">
             <div id="search-container">
-              <input id="search-input-text" onkeydown="updateSearchMenu()"
-                type="text" name="Search" placeholder="Search...">
+              <input id="search-input-text" onkeydown="updateSearchMenu()" type="text" name="Search" placeholder="Search...">
             </div>
             <div id="items-table-container">
               <table id="items-table">
@@ -84,29 +87,29 @@
             <span class="nutrition-subtext" id="serving-size-text"></span>
             <div id="line-thick"></div>
             <div id="nutrition-facts-data">
-                <span id="calories-text">Calories 0</span>
-                <br>
-                <span class="nutrition-subtext" id="calories-subtext">
-                  Calories from Fat 0
-                </span>
+              <span id="calories-text">Calories 0</span>
+              <br>
+              <span class="nutrition-subtext" id="calories-subtext">
+                Calories from Fat 0
+              </span>
               <div id="line-thin"></div>
-                <span id="fats-text">Total Fat 0g</span>
-                <br>
-                <span class="nutrition-subtext" id="fats-subtext">
-                  Saturated Fat 0g, Trans Fat 0g
-                </span>
+              <span id="fats-text">Total Fat 0g</span>
+              <br>
+              <span class="nutrition-subtext" id="fats-subtext">
+                Saturated Fat 0g, Trans Fat 0g
+              </span>
               <div id="line-thin"></div>
-                <span id="cholestrol-text">Cholestrol 0mg</span>
+              <span id="cholestrol-text">Cholestrol 0mg</span>
               <div id="line-thin"></div>
-                <span id="sodium-text">Sodium 0mg</span>
+              <span id="sodium-text">Sodium 0mg</span>
               <div id="line-thin"></div>
-                <span id="carbs-text">Total Carbohydrate 0g</span>
-                <br>
-                <span class="nutrition-subtext" id="carbs-subtext">
-                  Dietary Fiber 0g, Sugars 0g
-                </span>
+              <span id="carbs-text">Total Carbohydrate 0g</span>
+              <br>
+              <span class="nutrition-subtext" id="carbs-subtext">
+                Dietary Fiber 0g, Sugars 0g
+              </span>
               <div id="line-thin"></div>
-                <span id="protein-text">Protein 0g</span>
+              <span id="protein-text">Protein 0g</span>
               <div id="line-thin" style=""></div>
             </div>
             <div id="nutrition-clear-btn-container">
@@ -118,11 +121,12 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
 
   </main>
 </body>
 <!-- javascript -->
 <script type="text/javascript" src="js/server.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>
+
 </html>
