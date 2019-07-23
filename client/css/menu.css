@@ -121,10 +121,14 @@ main {
   flex-basis: 90%;
   margin-top: 15px;
 }
-#items-table-container {
-  height: 500px;
-  overflow-y: scroll;
+
+@media (orientation: landscape) {
+  #items-table-container {
+    height: 500px;
+    overflow-y: scroll;
+  }
 }
+
 #items-table {
   margin-top: 10px;
   margin-left: 20px;
@@ -206,7 +210,10 @@ main {
 }
 
 /* Mobile*/
-@media (orientation: portrait) {
+@media (orientation: portrait),
+(orientation: landscape) and
+(min-width: 321px) and
+(max-width: 767px) {
   main {
     overflow: scroll;
   }
