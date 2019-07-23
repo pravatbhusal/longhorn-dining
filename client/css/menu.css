@@ -301,7 +301,7 @@ main {
     display: flex;
     flex-direction: column;
     margin-top: 15px;
-    height: 500px;
+    height: 300%;
   }
   #items-table {
     margin-left: 8px;
