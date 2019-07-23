@@ -206,13 +206,13 @@ main {
 }
 
 /* Mobile or Mobile Landscape */
-@media (orientation: portrait),
-(orientation: landscape) and (min-width: 321px) and (max-width: 767px) {
+@media only screen and (orientation: portrait) {
   /* content */
   #content {
     display: flex;
     flex-direction: column;
     margin-top: 5vw;
+    justify-content: space-around;
   }
 
   /* header */
