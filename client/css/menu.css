@@ -205,7 +205,7 @@ main {
   background-color:black;
 }
 
-/* Mobile or Mobile Landscape */
+/* Mobile*/
 @media only screen and (orientation: portrait) {
   /* content */
   #content {
@@ -245,9 +245,9 @@ main {
     justify-content: space-around;
     align-content: center;
     flex-wrap: wrap;
-    padding: 0px;
-    margin: 5vw;;
-    padding-bottom: 4vw;
+    padding-top: 12vw;
+    padding-bottom: 15vw;
+    margin: 2vw;
   }
   #filter-subheader-desktop {
     display: none;
@@ -263,9 +263,11 @@ main {
     color: var(--burnt-orange);
   }
   #filter {
-    width: 10vw;
-    height: 4vw;
+    width: 1vw;
+    height: 1vw;
     padding: 5vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
 
     cursor: pointer;
     /* animation */
