@@ -206,7 +206,7 @@ main {
 }
 
 /* Mobile*/
-@media only screen and (orientation: portrait) {
+@media (orientation: portrait) {
   /* content */
   #content {
     display: flex;
