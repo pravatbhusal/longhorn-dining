@@ -34,63 +34,50 @@
 
       <!-- menu -->
       <div id="menu">
-        <div id="filters">
-          <div id="filter-subheader">
-            <span>RESTRICTIONS</span>
-          </div>
-          <!-- OFFLINE DEBUG -->
-          <!-- ################################
-          <div id="filter">
-            <div id="filter-container">
-              <p id="filter-text">
-                BUG
-              </p>
+        <div id="menu-content">
+          <div id="filters">
+            <div id="filter-subheader">
+              <span>RESTRICTIONS</span>
             </div>
-          </div>
-          <div id="filter">
-            <div id="filter-container">
-              <p id="filter-text">
-                FEATURE
-              </p>
+            <!-- OFFLINE DEBUG -->
+            <!-- ################################
+            <div id="filter">
+              <div id="filter-container">
+                <p id="filter-text">
+                  BUG
+                </p>
+              </div>
             </div>
-          </div>
-          <div id="filter">
-            <div id="filter-container">
-              <p id="filter-text">
-                TEST
-              </p>
+            <div id="filter">
+              <div id="filter-container">
+                <p id="filter-text">
+                  FEATURE
+                </p>
+              </div>
             </div>
-          </div>
-          ################################ -->
-        </div>
-        <div id="items">
-          <div id="search-container">
-            <input id="search-input-text" onkeydown="updateSearchMenu()"
-              type="text" name="Search" placeholder="Search...">
-          </div>
-          <div id="total-nutrition-container">
-            <div id="total-nutrition-btn-container">
-              <button class="total-nutrition-btn" id="standard-btn"
-                onclick="updateNutritionList()">
-                Total Facts
-              </button>
-              <button class="total-nutrition-btn" id="standard-btn"
-                onclick="resetTotalNutrition()">
-                Clear
-              </button>
+            <div id="filter">
+              <div id="filter-container">
+                <p id="filter-text">
+                  TEST
+                </p>
+              </div>
             </div>
-            <span id="total-nutrition-tooltip">
-              Click "Total Facts" to view combined nutrition facts.
-            </span>
+            ################################ -->
           </div>
-          <div id="items-table-container">
-            <table id="items-table">
-            </table>
+          <div id="items">
+            <div id="search-container">
+              <input id="search-input-text" onkeydown="updateSearchMenu()"
+                type="text" name="Search" placeholder="Search...">
+            </div>
+            <div id="items-table-container">
+              <table id="items-table">
+              </table>
+            </div>
           </div>
         </div>
 
         <!-- nutrition facts -->
-        <div id="nutrition-facts-desktop">
+        <div id="nutrition-facts">
           <div id="nutrition-facts-container">
             <b id="nutrition-facts-title">Nutrition Facts</b>
             <br>
@@ -122,44 +109,12 @@
                 <span id="protein-text">Protein 0g</span>
               <div id="line-thin" style=""></div>
             </div>
+            <div id="nutrition-clear-btn-container">
+              <button id="standard-btn" onclick="resetTotalNutrition()">
+                Clear
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- nutrition facts -->
-    <div id="nutrition-facts-mobile">
-      <div id="nutrition-facts-container">
-        <b id="nutrition-facts-title">Nutrition Facts</b>
-        <br>
-        <span class="nutrition-subtext" id="serving-size-text"></span>
-        <div id="line-thick"></div>
-        <div id="nutrition-facts-data">
-            <span id="calories-text">Calories 0</span>
-            <br>
-            <span class="nutrition-subtext" id="calories-subtext">
-              Calories from Fat 0
-            </span>
-          <div id="line-thin"></div>
-            <span id="fats-text">Total Fat 0g</span>
-            <br>
-            <span class="nutrition-subtext" id="fats-subtext">
-              Saturated Fat 0g, Trans Fat 0g
-            </span>
-          <div id="line-thin"></div>
-            <span id="cholestrol-text">Cholestrol 0mg</span>
-          <div id="line-thin"></div>
-            <span id="sodium-text">Sodium 0mg</span>
-          <div id="line-thin"></div>
-            <span id="carbs-text">Total Carbohydrate 0g</span>
-            <br>
-            <span class="nutrition-subtext" id="carbs-subtext">
-              Dietary Fiber 0g, Sugars 0g
-            </span>
-          <div id="line-thin"></div>
-            <span id="protein-text">Protein 0g</span>
-          <div id="line-thin" style=""></div>
         </div>
       </div>
     </div>

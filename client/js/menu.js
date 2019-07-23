@@ -356,6 +356,9 @@ function addFoodItem(item, quantity) {
   // set the food quantity
   foodQuantities[item] = newQuantity;
   quantityText.innerHTML = newQuantity;
+
+  // update the nutrition HTML
+  updateNutritionList();
 }
 
 // update the total nutritional values based on a food item
