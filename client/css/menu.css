@@ -207,6 +207,10 @@ main {
 
 /* Mobile*/
 @media (orientation: portrait) {
+  main {
+    overflow: scroll;
+  }
+
   /* content */
   #content {
     display: flex;
