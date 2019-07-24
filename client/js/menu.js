@@ -317,6 +317,9 @@ function updateNutritionItem(item) {
   let carbsSubtext = document.getElementById("carbs-subtext");
   carbsText.innerHTML = facts[6];
   carbsSubtext.innerHTML = facts[10] + ", " + facts[11];
+
+  // scroll to the nutrition facts element
+  window.location.href = "#nutrition-facts";
 }
 
 // update the nutrition fact's HTML based on the total nutrition list
