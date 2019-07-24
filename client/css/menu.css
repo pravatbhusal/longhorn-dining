@@ -24,24 +24,31 @@
   border-color: black;
   border-width: thick;
   border-style: solid;
+  width: 100%;
+  height: auto;
 }
 
 #nutrition-facts-container {
   font-family: var(--secondary-font);
-  width: 90%;
+  width: 20vw;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   margin: 20px;
 }
 
+#nutrition-facts-data {
+  font-size: 1vw;
+}
+
 #nutrition-facts-title {
   font-weight: 1000;
   font-size: 24px;
+  width: 5vw;
 }
 
 .nutrition-subtext {
-  font-size: 12px;
+  font-size: .5vw;
   text-align: justify;
 }
 
@@ -61,9 +68,12 @@
 
 .b {
   font-weight: 600;
+  font-size: 3vw;
+  width: 100%
 }
 
 #item-text {
+  font-size: 1.25vw;
   color: var(--light-blue);
   cursor: pointer;
 }
@@ -187,7 +197,7 @@
   }
 
   #items-table-container {
-    height: 500px;
+    height: 70vh;
     overflow-y: scroll;
   }
 
@@ -426,10 +436,6 @@
 
   #nutrition-facts-title {
     font-size: 16px;
-  }
-
-  .nutrition-subtext {
-    font-size: 8px;
   }
 }
 
