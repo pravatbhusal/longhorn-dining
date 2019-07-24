@@ -46,6 +46,12 @@ html {
   background-color: black;
 }
 
+/* items */
+#item-quantity-text {
+  font-family: var(--secondary-font);
+  color: var(--burnt-orange);
+}
+
 /* SCREEN SPECIFIC-MEDIA */
 @media (orientation: landscape) and (min-width: 768px) {
 
@@ -193,10 +199,6 @@ html {
   #item-step-container {
     margin-left: 10px;
   }
-  #item-quantity-text {
-    font-family: var(--secondary-font);
-    color: var(--burnt-orange);
-  }
 
   /* nutrition facts */
   #nutrition-facts {
@@ -222,7 +224,7 @@ html {
     width: 5vw;
   }
   .nutrition-subtext {
-    font-size: .5vw;
+    font-size: 0.75vw;
     text-align: justify;
   }
 

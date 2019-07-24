@@ -195,6 +195,15 @@ function formatCategoryItem(foodIcons, item) {
   }
   filterImages += `</div>`;
 
+  // retrieve the serving type of the item from its nutrition facts
+  let servingType = nutrition[item][0].match(/[a-zA-Z]+/g);
+  const servingTypeIndex = 2;
+  if(servingType.length >= servingTypeIndex) {
+    servingType = servingType[servingTypeIndex];
+  } else {
+    servingType = "each";
+  }
+
   // the quantity of this item if the user added a quantity
   let quantity = foodQuantities[item] ? foodQuantities[item] : 0;
   return `
@@ -208,7 +217,10 @@ function formatCategoryItem(foodIcons, item) {
       </div>
       <div id="item-step-container">
         <button onclick="addFoodItem('${item}', -1)" id="standard-btn">-</button>
-        <span data-quantity="${item}" id="item-quantity-text">${quantity}</span>
+        <span data-quantity="${item}" id="item-quantity-text">
+          ${quantity}
+        </span>
+        <span id="item-quantity-text">${servingType}</span>
         <button onclick="addFoodItem('${item}', 1)" id="standard-btn">+</button>
       </div>
     </td>
@@ -258,7 +270,7 @@ function isDisplayItem(items, item, search, whiteListOn, whiteListCount) {
   let filterInCount = 0;
 
   // if search is enabled and the item is not searched, then filter it out
-  let itemLowerCase = item.toString().toLowerCase();
+  let itemLowerCase = item.toLowerCase();
   let searchLowerCase = search ? search.toString().toLowerCase() : undefined;
   if (search && itemLowerCase.indexOf(searchLowerCase) == -1) {
     filterOut = true;
