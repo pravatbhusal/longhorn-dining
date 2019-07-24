@@ -200,11 +200,11 @@ function formatCategoryItem(foodIcons, item) {
   return `
   <tr data-item="${item}">
     <td id="item-row">
-    <div id="item-info">
-      <span id="item-text" onclick="updateNutritionItem('${item}')">
-        ${item}
-      </span>
-      ${filterImages}
+      <div id="item-info">
+        <span id="item-text" onclick="updateNutritionItem('${item}')">
+          ${item}
+        </span>
+        ${filterImages}
       </div>
       <div id="item-step-container">
         <button onclick="addFoodItem('${item}', -1)" id="standard-btn">-</button>
