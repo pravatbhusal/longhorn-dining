@@ -59,12 +59,13 @@ fetch(serverURL + "/meal/location/menu", {
       addFilterButtons(filters, menu);
       updateMenuItems();
     } else {
-      alert("Failed to receive information from UT. Check back later!");
+      alert("UT's menu is down right now, it'll be back in a few hours!");
       window.location.href = "index.html";
     }
   });
 }).catch((error) => {
-  alert("Failed to receive the information from the server.");
+  alert("Could not connect to the server, redirecting back!");
+  window.location.href = "index.html";
 });
 
 // add the filter buttons onto the content's HTML
