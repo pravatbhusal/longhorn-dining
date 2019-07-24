@@ -196,6 +196,17 @@ function formatCategoryItem(foodIcons, item) {
   }
   filterImages += `</div>`;
 
+  // detetermine the serving size of the food item
+  let servingText = " of ";
+  let servingInfo = nutrition[item][0].split(" ");
+  const servingTypeIndex = 3;
+  if(servingInfo.length >= servingTypeIndex) {
+    // append the serving size and serving type
+    const servingSizeIndex = 2;
+    servingText += servingInfo[servingSizeIndex] + " " +
+      servingInfo[servingTypeIndex] + " servings";
+  }
+
   // the quantity of this item if the user added a quantity
   let quantity = foodQuantities[item] ? foodQuantities[item] : 0;
   return `
@@ -212,7 +223,7 @@ function formatCategoryItem(foodIcons, item) {
         <span data-quantity="${item}" id="item-quantity-text">
           ${quantity}
         </span>
-        <span id="item-servings-text">servings</span>
+        <span id="item-servings-text">${servingText}</span>
         <button onclick="addFoodItem('${item}', 1)" id="standard-btn">+</button>
       </div>
     </td>
