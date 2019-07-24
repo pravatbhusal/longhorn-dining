@@ -51,6 +51,10 @@ html {
   font-family: var(--secondary-font);
   color: var(--burnt-orange);
 }
+#item-servings-text {
+  font-family: var(--secondary-font);
+  color: var(--burnt-orange);
+}
 
 /* SCREEN SPECIFIC-MEDIA */
 @media (orientation: landscape) and (min-width: 768px) {

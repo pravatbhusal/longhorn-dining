@@ -211,7 +211,7 @@ function formatCategoryItem(foodIcons, item) {
         <span data-quantity="${item}" id="item-quantity-text">
           ${quantity}
         </span>
-        <span id="item-quantity-text">servings</span>
+        <span id="item-servings-text">servings</span>
         <button onclick="addFoodItem('${item}', 1)" id="standard-btn">+</button>
       </div>
     </td>
