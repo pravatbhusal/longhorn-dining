@@ -1,10 +1,10 @@
 // receive the URL variables
 function getURLParams() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m,key,value) => {
-      vars[key] = value;
-    });
-    return vars;
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
+    vars[key] = value;
+  });
+  return vars;
 }
 const meal = getURLParams()["meal"];
 const loc = getURLParams()["loc"];
@@ -26,9 +26,19 @@ var filterIns = {};
 var foodQuantities = {};
 
 // total amount of nutrition value of each food item added by the user
-var totalNutrition = {"Calories": 0, "Calories from Fat": 0, "Total Fat": 0,
-  "Saturated Fat": 0, "Trans Fat": 0, "Cholestrol": 0, "Sodium": 0,
-  "Total Carbohydrate": 0, "Dietary Fiber": 0, "Sugars": 0, "Protein": 0};
+var totalNutrition = {
+  "Calories": 0,
+  "Calories from Fat": 0,
+  "Total Fat": 0,
+  "Saturated Fat": 0,
+  "Trans Fat": 0,
+  "Cholestrol": 0,
+  "Sodium": 0,
+  "Total Carbohydrate": 0,
+  "Dietary Fiber": 0,
+  "Sugars": 0,
+  "Protein": 0
+};
 
 // send an HTTP request to receive the items
 fetch(serverURL + "/meal/location/menu", {
@@ -44,7 +54,7 @@ fetch(serverURL + "/meal/location/menu", {
     menu = json["Menu"];
     nutrition = json["Nutrition"];
 
-    if(Object.keys(menu).length != 0) {
+    if (Object.keys(menu).length != 0) {
       // view the food information
       addFilterButtons(filters, menu);
       updateMenuItems();
@@ -86,17 +96,17 @@ function getFilterName(filter) {
   let filterName = filter;
 
   // determine the filter name from the cases
-  if(filter != "Vegan" && filter != "Healthy") {
-    if(filter == "Veggie") {
+  if (filter != "Vegan" && filter != "Healthy") {
+    if (filter == "Veggie") {
       // special case for vegetarian renaming
       filterName = "Vegetarian";
     } else {
       // special cases for plurals and renaming
-      if(filter == "Milk") {
+      if (filter == "Milk") {
         filter = "Dairy";
-      } else if(filter == "Nuts") {
+      } else if (filter == "Nuts") {
         filter = "Nut";
-      } else if(filter == "Eggs") {
+      } else if (filter == "Eggs") {
         filter = "Egg";
       }
       filterName = filter + "-Free";
@@ -112,7 +122,7 @@ function toggleFilter(filter) {
 
   // determine what type of filtering this filter goes to
   let filterObj = filterOuts;
-  if(filter == "Veggie" || filter == "Vegan" || filter == "Healthy" || filter == "Gluten") {
+  if (filter == "Veggie" || filter == "Vegan" || filter == "Healthy" || filter == "Gluten") {
     // set the filter object to filter in (whitelist) these foods
     filterObj = filterIns;
   }
@@ -120,7 +130,7 @@ function toggleFilter(filter) {
   // receive the div button for the filter
   const filterDiv = document.querySelector(`[data-filter='${filter}']`);
 
-  if(!filterObj[foodIcon]) {
+  if (!filterObj[foodIcon]) {
     // this filter has not been added, so add it into the current filters
     filterObj[foodIcon] = filter;
     filterDiv.style.opacity = 0.7;
@@ -177,7 +187,7 @@ function formatCategoryItem(foodIcons, item) {
 
   // loop through each food icon (filter)
   let foodIconIndex = 0;
-  while(foodIconIndex < foodIcons.length) {
+  while (foodIconIndex < foodIcons.length) {
     // get the food icon, then append it as an image
     let foodIcon = foodIcons[foodIconIndex];
     filterImages += `<img id="item-image" src="${foodIcon}">`;
@@ -190,10 +200,12 @@ function formatCategoryItem(foodIcons, item) {
   return `
   <tr data-item="${item}">
     <td id="item-row">
+    <div id="item-info">
       <span id="item-text" onclick="updateNutritionItem('${item}')">
         ${item}
       </span>
       ${filterImages}
+      </div>
       <div id="item-step-container">
         <button onclick="addFoodItem('${item}', -1)" id="standard-btn">-</button>
         <span data-quantity="${item}" id="item-quantity-text">${quantity}</span>
@@ -227,10 +239,10 @@ function filterMenuItems(search) {
 
       // display the item (or items if repeated) if it obeys the filters
       const itemDivs = document.querySelectorAll(`[data-item='${item}']`);
-      for(let itemDivIndex = 0; itemDivIndex < itemDivs.length; itemDivIndex++) {
+      for (let itemDivIndex = 0; itemDivIndex < itemDivs.length; itemDivIndex++) {
         let itemDiv = itemDivs[itemDivIndex];
 
-        if(isDisplay) {
+        if (isDisplay) {
           itemDiv.style.display = "table-row";
         } else {
           itemDiv.style.display = "none";
@@ -248,21 +260,21 @@ function isDisplayItem(items, item, search, whiteListOn, whiteListCount) {
   // if search is enabled and the item is not searched, then filter it out
   let itemLowerCase = item.toString().toLowerCase();
   let searchLowerCase = search ? search.toString().toLowerCase() : undefined;
-  if(search && itemLowerCase.indexOf(searchLowerCase) == -1) {
+  if (search && itemLowerCase.indexOf(searchLowerCase) == -1) {
     filterOut = true;
   } else {
     // this food item's icons (filters)
     const foodIcons = items[item];
     let foodIconIndex = 0;
-    while(foodIconIndex < foodIcons.length && !filterOut) {
+    while (foodIconIndex < foodIcons.length && !filterOut) {
       // get the food icon
       let foodIcon = foodIcons[foodIconIndex];
 
-      if(whiteListOn && filterIns[foodIcon]) {
+      if (whiteListOn && filterIns[foodIcon]) {
         // this item is whitelisted (filter in)
         filterInCount++;
       }
-      if(filterOuts[foodIcon]) {
+      if (filterOuts[foodIcon]) {
         // this item is blacklisted (filter out)
         filterOut = true;
       }
@@ -270,8 +282,8 @@ function isDisplayItem(items, item, search, whiteListOn, whiteListCount) {
     }
   }
   // return whether to display the item on the menu
-  return (whiteListOn && filterInCount == whiteListCount && !filterOut)
-    || (!whiteListOn && !filterOut);
+  return (whiteListOn && filterInCount == whiteListCount && !filterOut) ||
+    (!whiteListOn && !filterOut);
 }
 
 // update the nutrition fact's HTML based on an item
@@ -350,7 +362,7 @@ function addFoodItem(item, quantity) {
   let newQuantity = parseInt(quantityText.innerText) + quantity;
 
   // update the total nutritional facts
-  if(newQuantity < 0) {
+  if (newQuantity < 0) {
     // reset the quantities
     newQuantity = 0;
     quantity = 0;
@@ -398,14 +410,24 @@ function updateTotalNutrition(item, quantity) {
 function resetTotalNutrition() {
   // reset the food quantities and total nutrition
   foodQuantities = {};
-  totalNutrition = {"Calories": 0, "Calories from Fat": 0, "Total Fat": 0,
-    "Saturated Fat": 0, "Trans Fat": 0, "Cholestrol": 0, "Sodium": 0,
-    "Total Carbohydrate": 0, "Dietary Fiber": 0, "Sugars": 0, "Protein": 0};
+  totalNutrition = {
+    "Calories": 0,
+    "Calories from Fat": 0,
+    "Total Fat": 0,
+    "Saturated Fat": 0,
+    "Trans Fat": 0,
+    "Cholestrol": 0,
+    "Sodium": 0,
+    "Total Carbohydrate": 0,
+    "Dietary Fiber": 0,
+    "Sugars": 0,
+    "Protein": 0
+  };
   updateNutritionList();
 
   // reset all the quantity texts
   let quantityTexts = document.querySelectorAll("[id=item-quantity-text]");
-  for(let textIndex = 0; textIndex < quantityTexts.length; textIndex++) {
+  for (let textIndex = 0; textIndex < quantityTexts.length; textIndex++) {
     quantityTexts[textIndex].innerHTML = 0;
   }
 }
