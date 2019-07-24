@@ -226,7 +226,8 @@
 (min-width: 321px) and
 (max-width: 767px) {
   main {
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   /* content */
