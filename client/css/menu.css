@@ -165,6 +165,7 @@ html {
   #items-table-container {
     height: 70vh;
     overflow-y: scroll;
+    scroll-behavior: smooth;
   }
   #items-table {
     width: 95%;
