@@ -335,6 +335,9 @@ function updateNutritionItem(item) {
 
   // scroll to the nutrition facts element
   window.location.href = "#nutrition-facts";
+
+  // display the mobile back item button for this item
+  document.getElementsByClassName("mobile-back-item-btn")[0].style.display = "inline-block";
 }
 
 // update the nutrition fact's HTML based on the total nutrition list
@@ -371,6 +374,9 @@ function updateNutritionList() {
   carbsText.innerHTML = "Total Carbohydrate " + totalNutrition["Total Carbohydrate"] + "g";
   carbsSubtext.innerHTML = "Dietary Fiber " + totalNutrition["Dietary Fiber"] +
     "g, " + "Sugars " + totalNutrition["Sugars"] + "g";
+
+  // do not display the mobile back item button because it's only for specific items
+  document.getElementsByClassName("mobile-back-item-btn")[0].style.display = "none";
 }
 
 // add a food item to the total nutrition
@@ -447,5 +453,20 @@ function resetTotalNutrition() {
   let quantityTexts = document.querySelectorAll("[id=item-quantity-text]");
   for (let textIndex = 0; textIndex < quantityTexts.length; textIndex++) {
     quantityTexts[textIndex].innerHTML = 0;
+  }
+}
+
+// scroll back to the item from the nutrition facts
+function goBackToItem() {
+  let item = document.getElementById("nutrition-facts-title").innerText;
+  const itemDiv = document.querySelector(`[data-item='${item}']`);
+
+  // scroll to the middle of the item
+  if(itemDiv) {
+    itemDiv.scrollIntoView({
+      behavior: "auto",
+      block: "center",
+      inline: "center"
+    });
   }
 }

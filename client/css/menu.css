@@ -45,6 +45,10 @@ html {
   margin-bottom: 10px;
   background-color: black;
 }
+.mobile-back-item-btn {
+  display: none;
+  visibility: hidden;
+}
 
 /* items */
 #item-quantity-text {
@@ -405,6 +409,9 @@ html {
   }
   #nutrition-facts-title {
     font-size: 16px;
+  }
+  .mobile-back-item-btn {
+    visibility: visible;
   }
 }
 
