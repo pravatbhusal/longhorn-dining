@@ -9,10 +9,6 @@
 }
 
 /* GLOBAL MEDIA */
-html {
-  scroll-behavior: smooth;
-}
-
 /* standard button */
 #standard-btn {
   color: var(--white);

@@ -463,10 +463,6 @@ function goBackToItem() {
 
   // scroll to the middle of the item
   if(itemDiv) {
-    itemDiv.scrollIntoView({
-      behavior: "auto",
-      block: "center",
-      inline: "center"
-    });
+    itemDiv.scrollIntoView({block: "center"});
   }
 }
