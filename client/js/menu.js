@@ -334,7 +334,8 @@ function updateNutritionItem(item) {
   carbsSubtext.innerHTML = facts[10] + ", " + facts[11];
 
   // scroll to the nutrition facts element
-  window.location.href = "#nutrition-facts";
+  const nutritionFactsDiv = document.getElementById("nutrition-facts");
+  nutritionFactsDiv.scrollIntoView({block: "center"});
 
   // display the mobile back item button for this item
   document.getElementsByClassName("mobile-back-item-btn")[0].style.display = "inline-block";
