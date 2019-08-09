@@ -330,7 +330,7 @@ function updateNutritionItem(item) {
   // update the carbohydrate facts
   let carbsText = document.getElementById("carbs-text");
   let carbsSubtext = document.getElementById("carbs-subtext");
-  carbsText.innerHTML = facts[6];
+  carbsText.innerHTML = facts[9];
   carbsSubtext.innerHTML = facts[10] + ", " + facts[11];
 
   // scroll to the nutrition facts element
