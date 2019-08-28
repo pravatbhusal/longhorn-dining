@@ -325,7 +325,7 @@ function updateNutritionItem(item) {
   let fatsText = document.getElementById("fats-text");
   let fatsSubtext = document.getElementById("fats-subtext");
   fatsText.innerHTML = facts[4];
-  fatsSubtext.innerHTML = facts[5] + ", " + facts[5];
+  fatsSubtext.innerHTML = facts[5] + ", " + facts[6];
 
   // update the carbohydrate facts
   let carbsText = document.getElementById("carbs-text");
